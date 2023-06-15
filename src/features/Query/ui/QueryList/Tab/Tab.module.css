@@ -1,0 +1,23 @@
+.tabs {
+  @apply px-7 py-3 sticky top-0 left-0 w-full flex bg-lime-50 border-b border-gray-300 shadow-sm z-10;
+}
+
+.tab {
+  @apply text-gray-600 flex transition;
+}
+
+.tab + .tab {
+  @apply ml-6;
+}
+
+.tab svg {
+  @apply mr-1.5 w-5;
+}
+
+.active {
+  @apply text-primary;
+}
+
+.tab:hover:not(.active) {
+  @apply text-gray-800;
+}

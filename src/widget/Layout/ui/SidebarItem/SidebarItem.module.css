@@ -1,0 +1,13 @@
+.SidebarItem {
+  @apply relative flex items-center w-full px-2 min-w-[64px] transition duration-200 hover:bg-primary/10 select-none;
+}
+.SidebarItemIcon {
+  @apply flex items-center justify-center w-12 h-12 flex-shrink-0;
+}
+.SidebarItemActive {
+  @apply bg-primary text-white hover:bg-primary/90;
+}
+
+.SidebarItemAccent {
+  @apply text-primary;
+}

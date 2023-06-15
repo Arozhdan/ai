@@ -1,0 +1,46 @@
+.card {
+  @apply px-6 py-4 bg-white mb-4 shadow hover:shadow-md transition relative;
+}
+.header {
+  @apply line-clamp-2 pr-10;
+}
+.info {
+  @apply block text-gray-500 mb-3;
+}
+.title {
+  @apply ml-6;
+}
+.body {
+  @apply line-clamp-3;
+}
+
+.cardExpanded .body {
+  @apply line-clamp-none;
+}
+
+.actions {
+  @apply flex justify-end mt-6;
+}
+
+.more {
+  @apply hover:text-blue-900 hover:animate-pulse text-sm;
+}
+
+.use {
+  @apply text-amber-500;
+}
+
+.menuIcon {
+  @apply text-gray-500 w-6 h-6 hover:text-gray-900 absolute top-4 right-6;
+}
+.menu {
+  @apply absolute top-10 right-6 px-1 py-2 shadow-lg bg-white ring-1 ring-black ring-opacity-5;
+  @apply flex flex-col;
+}
+
+.menuItem {
+  @apply flex py-1 px-4 hover:bg-gray-100 cursor-pointer select-none transition hover:text-primary;
+}
+.menuItemIcon {
+  @apply w-6 h-6 mr-2;
+}

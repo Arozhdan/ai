@@ -1,0 +1,29 @@
+.sidebar {
+  @apply py-8 p-12  flex flex-col h-full relative;
+}
+.sidebarHeader {
+  @apply h-16 flex cursor-pointer items-center;
+}
+
+.sidebarContent {
+  @apply flex flex-col justify-between mt-24 flex-grow;
+}
+.sidebarContentTop {
+  @apply grid gap-2;
+}
+.sidebarCollapseToggle {
+  @apply flex items-center mt-10
+  text-primary border-primary
+  justify-center w-48 mx-auto h-10 border;
+}
+
+.sidebarCollapseToggle svg {
+  @apply rotate-180;
+}
+
+.sidebarCollapsed .sidebarCollapseToggle svg {
+  @apply rotate-0;
+}
+.sidebarCollapsed .sidebarCollapseToggle {
+  @apply w-16;
+}

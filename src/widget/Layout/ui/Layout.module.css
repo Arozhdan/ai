@@ -1,0 +1,29 @@
+.wrapper {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: minmax(320px, 20%) auto;
+  grid-template-rows: 88px auto;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar app";
+}
+.sidebar {
+  grid-area: sidebar;
+  @apply border-r-primary border-r;
+}
+.header {
+  grid-area: header;
+  @apply flex items-center justify-end py-6 px-12 border-b-primary border-b;
+}
+.header.hasTitle {
+  @apply justify-between;
+}
+
+.app {
+  grid-area: app;
+  @apply bg-background  h-full overflow-y-auto;
+}
+
+.wrapperCollapsed {
+  grid-template-columns: 150px auto;
+}

@@ -1,0 +1,11 @@
+.Signup {
+  @apply w-screen h-screen flex flex-col justify-center;
+}
+
+.title {
+  @apply flex justify-center items-center;
+}
+
+.formWrapper {
+  @apply max-w-5xl w-10/12 mx-auto mt-20;
+}

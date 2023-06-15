@@ -1,0 +1,6 @@
+.PromptCard {
+  @apply border border-primary pt-20 px-9 pb-5 transition duration-200 hover:cursor-pointer hover:shadow-md;
+}
+.title {
+  @apply h-16 flex flex-col justify-end;
+}

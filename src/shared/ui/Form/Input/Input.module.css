@@ -1,0 +1,54 @@
+.withIcon {
+  @apply relative;
+}
+.withIcon .input {
+  @apply relative pr-10;
+}
+
+.hasError {
+  @apply relative pb-6;
+}
+.hasError .inner {
+  @apply border-b-red-500 border-b;
+}
+.inner {
+  @apply border-b-primary border-b;
+}
+.label {
+  @apply invisible w-0 h-0 absolute;
+}
+.withLabel .label {
+  @apply visible w-auto h-auto static;
+}
+
+.input {
+  @apply w-full bg-transparent py-2 outline-none text-black;
+}
+.input::placeholder {
+  @apply text-black;
+}
+
+.icon {
+  @apply absolute top-2 right-0 flex items-center justify-center;
+}
+.eye {
+  @apply hover:cursor-pointer text-gray-500 active:text-primary;
+}
+.errorText {
+  @apply text-red-500 absolute bottom-0 left-0;
+}
+
+.outlined {
+  @apply relative pt-7;
+}
+
+.outlined .inner {
+  @apply border border-gray-300;
+}
+
+.outlined .label {
+  @apply top-0 visible w-full;
+}
+.outlined .input {
+  @apply pl-1;
+}

@@ -1,0 +1,15 @@
+.page {
+  @apply p-12;
+}
+
+.header {
+  @apply mb-10;
+}
+
+.wrapper {
+  @apply grid gap-5;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+}
+.wrapper > * {
+  @apply flex-grow flex-shrink-0 min-w-[290px];
+}
