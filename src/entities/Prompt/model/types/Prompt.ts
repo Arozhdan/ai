@@ -13,5 +13,6 @@ export interface Prompt {
     helpText: string
     description: string
     slug: string
+    id?: number
   }
 }

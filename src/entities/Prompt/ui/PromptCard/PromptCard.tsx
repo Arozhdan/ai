@@ -12,7 +12,7 @@ interface PromptCardProps {
   slug: Prompt["attributes"]["slug"]
 }
 
-export const PromptCard = ({ className, title, description, help, slug }: PromptCardProps) => {
+export const PromptCard = ({ className, title, description, slug }: PromptCardProps) => {
   const classes = clsx(styles.PromptCard, className)
   return (
     <Link to={"/prompts/" + slug} className={classes}>

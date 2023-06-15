@@ -4,8 +4,8 @@ import { Button, Input } from "@/shared/ui"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import {
-  getLoginError,
-  getLoginIsLoading,
+  // getLoginError,
+  // getLoginIsLoading,
   getLoginPassword,
   getLoginUsername,
 } from "@/features/AuthByUserName"
@@ -19,8 +19,8 @@ interface LoginFormProps {
 export const LoginForm = ({ className, onSubmit }: LoginFormProps) => {
   const username = useSelector(getLoginUsername)
   const password = useSelector(getLoginPassword)
-  const error = useSelector(getLoginError)
-  const isLoading = useSelector(getLoginIsLoading)
+  // const error = useSelector(getLoginError)
+  // const isLoading = useSelector(getLoginIsLoading)
 
   const formik = useFormik({
     initialValues: {

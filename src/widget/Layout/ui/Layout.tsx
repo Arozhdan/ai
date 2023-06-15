@@ -1,6 +1,5 @@
 /* eslint-disable react/display-name */
-import { memo, useState } from "react"
-import { ReactComponent as Help } from "@/app/assets/icons/Help.svg"
+import { memo } from "react"
 import styles from "./Layout.module.css"
 import { Sidebar } from "./Sidebar/Sidebar"
 import { Button, Typography } from "@/shared/ui"

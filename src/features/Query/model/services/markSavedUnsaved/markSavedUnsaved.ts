@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "@/app/providers/StoreProvider/config/StateSchema"
-import { queryActions } from "../../slice/QuerySlice"
 import { toast } from "react-toastify"
 
 interface Params {

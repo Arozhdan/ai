@@ -1,4 +1,3 @@
-import clsx from "clsx"
 import styles from "./RequestLoader.module.css"
 import { useEffect, useMemo, useState } from "react"
 import { LogoExpanded, Typography } from "@/shared/ui"

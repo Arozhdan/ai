@@ -1,6 +1,6 @@
 import clsx from "clsx"
 import styles from "./Sidebar.module.css"
-import { FC, useState } from "react"
+import { FC } from "react"
 import { LogoExpanded } from "@/shared/ui/Logo/LogoExpanded"
 import { SidebarItem } from "../SidebarItem/SidebarItem"
 import { ReactComponent as HomeIcon } from "@/app/assets/icons/Home_Empty.svg"
