@@ -3,7 +3,6 @@ import { UserResponse, userActions } from "@/entities/User"
 import { JWT_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage"
 import { ThunkConfig } from "@/app/providers/StoreProvider/config/StateSchema"
 import { toast } from "react-toastify"
-import { AxiosError } from "axios"
 
 interface LoginByUsernameProps {
   username: string
@@ -38,8 +37,7 @@ export const loginByUsername = createAsyncThunk<
     dispatch(userActions.setAuthData(response.data))
     return response.data
   } catch (e) {
-    console.log(typeof e)
-
+    toast.error("Error logging in")
     console.log(e)
     return rejectWithValue("error")
   }
