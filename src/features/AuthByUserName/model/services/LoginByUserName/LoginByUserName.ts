@@ -2,6 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit"
 import { UserResponse, userActions } from "@/entities/User"
 import { JWT_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage"
 import { ThunkConfig } from "@/app/providers/StoreProvider/config/StateSchema"
+import { toast } from "react-toastify"
+import { AxiosError } from "axios"
 
 interface LoginByUsernameProps {
   username: string
@@ -16,6 +18,12 @@ export const loginByUsername = createAsyncThunk<
   const { extra, dispatch, rejectWithValue } = thunkApi
 
   try {
+    console.log("loginByUsername")
+    console.log({
+      identifier: authData.username,
+      password: authData.password,
+    })
+
     const response = await extra.api.post<UserResponse>("/auth/local", {
       identifier: authData.username,
       password: authData.password,
@@ -30,6 +38,8 @@ export const loginByUsername = createAsyncThunk<
     dispatch(userActions.setAuthData(response.data))
     return response.data
   } catch (e) {
+    console.log(typeof e)
+
     console.log(e)
     return rejectWithValue("error")
   }
