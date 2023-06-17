@@ -20,20 +20,17 @@ const Login = () => {
     }
   }, [auth.jwt])
 
-  const handleSubmit = useCallback(
-    async (values: { email: string; password: string }) => {
-      const result = await dispatch(
-        loginByUsername({
-          username: values.email,
-          password: values.password,
-        }),
-      )
-      if (result.meta.requestStatus === "fulfilled") {
-        navigate("/")
-      }
-    },
-    [dispatch],
-  )
+  const handleSubmit = useCallback(async (values: { email: string; password: string }) => {
+    const result = await dispatch(
+      loginByUsername({
+        username: values.email,
+        password: values.password,
+      }),
+    )
+    if (result.meta.requestStatus === "fulfilled") {
+      navigate("/")
+    }
+  }, [])
 
   return (
     <div className={styles.login}>

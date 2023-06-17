@@ -1,9 +1,9 @@
 .wrapper {
   @apply absolute inset-0 flex items-center justify-center z-50;
-  @apply bg-white/50;
+  @apply bg-black/5;
 }
 .inner {
-  @apply bg-white p-8 min-w-[320px] shadow-sm flex flex-col justify-center items-center text-center;
+  @apply bg-white p-8 min-w-[320px] shadow-md flex flex-col justify-center items-center text-center;
 }
 
 .logo {

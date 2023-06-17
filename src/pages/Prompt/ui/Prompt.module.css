@@ -7,3 +7,20 @@
 .aside {
   @apply col-span-5 relative;
 }
+
+@media (max-width: 1024px) {
+  .page {
+    @apply grid-cols-1 grid-rows-1;
+    grid-template-areas:
+      "aside"
+      "form";
+  }
+  .formWrapper {
+    @apply col-span-1 border-t border-primary;
+    grid-area: form;
+  }
+  .aside {
+    @apply col-span-1 overflow-y-auto;
+    grid-area: aside;
+  }
+}

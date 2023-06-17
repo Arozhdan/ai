@@ -21,9 +21,7 @@ const Main = () => {
   const filteredPrompts = useSelector((state: StateSchema) =>
     getFilteredPrompts(state, { query: query }),
   )
-  // useEffect(() => {
-  //   dispatch(promptActions.unsetSelectedPrompt())
-  // })
+
   useEffect(() => {
     if (!filteredPrompts?.length) dispatch(fetchPromptsList({}))
     dispatch(promptActions.unsetSelectedPrompt())

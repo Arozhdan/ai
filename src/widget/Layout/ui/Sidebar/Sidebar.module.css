@@ -1,20 +1,28 @@
 .sidebar {
-  @apply py-8 p-12  flex flex-col h-full relative;
+  @apply py-8 p-6 xl:p-12  flex flex-col h-screen relative overflow-scroll;
+  scrollbar-width: none;
 }
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
 .sidebarHeader {
   @apply h-16 flex cursor-pointer items-center;
 }
 
 .sidebarContent {
-  @apply flex flex-col justify-between mt-24 flex-grow;
+  @apply flex flex-col justify-between mt-10 lg:mt-14 xl:mt-24 flex-grow;
 }
-.sidebarContentTop {
-  @apply grid gap-2;
+.sidebarContentTop,
+.sidebarContentBottom,
+.sidebarContentMiddle {
+  @apply grid justify-start;
 }
 .sidebarCollapseToggle {
-  @apply flex items-center mt-10
+  @apply flex items-center mt-6
   text-primary border-primary
-  justify-center w-48 mx-auto h-10 border;
+  justify-center w-full mx-auto h-10 border;
 }
 
 .sidebarCollapseToggle svg {
@@ -26,4 +34,13 @@
 }
 .sidebarCollapsed .sidebarCollapseToggle {
   @apply w-16;
+}
+.sidebarCollapsed .sidebarHeader {
+  @apply w-16 h-16 flex justify-center items-center mx-auto;
+}
+
+.sidebarCollapsed .sidebarContentTop,
+.sidebarCollapsed .sidebarContentBottom,
+.sidebarCollapsed .sidebarContentMiddle {
+  @apply grid justify-center xl:justify-start;
 }

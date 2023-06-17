@@ -1,19 +1,22 @@
 .wrapper {
   display: grid;
   height: 100vh;
-  grid-template-columns: minmax(320px, 20%) auto;
-  grid-template-rows: 88px auto;
+  grid-template-columns: minmax(auto, 20%) auto;
+  grid-template-rows: 112px 1fr;
   grid-template-areas:
     "sidebar header"
     "sidebar app";
 }
+.collapseButton {
+  @apply block md:hidden w-6 ml-5;
+}
 .sidebar {
   grid-area: sidebar;
-  @apply border-r-primary border-r;
+  @apply border-r-primary border-r transition;
 }
 .header {
   grid-area: header;
-  @apply flex items-center justify-end py-6 px-12 border-b-primary border-b;
+  @apply flex items-center justify-end py-3 lg:py-6 px-4 lg:px-12 border-b-primary border-b h-28;
 }
 .header.hasTitle {
   @apply justify-between;
@@ -26,4 +29,26 @@
 
 .wrapperCollapsed {
   grid-template-columns: 150px auto;
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: auto;
+    grid-template-areas:
+      "header"
+      "app";
+    grid-template-rows: 112px 1fr auto;
+  }
+  .sidebar {
+    @apply fixed top-0 left-0 w-full h-full z-50 bg-white;
+  }
+  .wrapperCollapsed .sidebar {
+    @apply -translate-x-1/2 -left-1/2;
+  }
 }

@@ -1,6 +1,9 @@
 .wrapper {
-  @apply grid grid-cols-2 items-center;
+  @apply grid md:grid-cols-2 items-center;
 }
 .LoginForm {
   @apply p-10 grid gap-10;
+}
+.image {
+  @apply hidden md:block;
 }

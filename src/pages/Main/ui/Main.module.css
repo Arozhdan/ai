@@ -1,5 +1,5 @@
 .page {
-  @apply p-12;
+  @apply p-6 lg:p-12;
 }
 
 .header {
