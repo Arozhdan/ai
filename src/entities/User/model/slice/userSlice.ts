@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { getMe, UserSchema } from "../.."
+import { UserSchema } from "../.."
 import { JWT_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage"
 import { User, UserResponse } from "../types/User.interface"
 import { $api } from "@/shared/api/api"

@@ -8,7 +8,6 @@ import { Link } from "react-router-dom"
 import {
   BookmarkIcon,
   BookmarkSlashIcon,
-  ChatBubbleBottomCenterIcon,
   EllipsisHorizontalIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline"
@@ -81,9 +80,7 @@ export const QueryCard = ({ query, className, active }: Props) => {
             {query.title}
           </Link>
         </Typography>
-        <Typography as='div'>
-          {getMessage(query.result)}
-        </Typography>
+        <Typography as='div'>{getMessage(query.result)}</Typography>
       </div>
       <div className={styles.actions}>
         {query.result && query.result.length > 150 && (

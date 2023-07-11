@@ -120,10 +120,10 @@ export const querySlice = createSlice({
       .addCase(deleteQuery.pending, (state, action) => {
         state.list = state.list.filter((item) => item.id !== action.meta.arg)
       })
-      .addCase(deleteQuery.fulfilled, (state, action) => {
+      .addCase(deleteQuery.fulfilled, () => {
         toast.success("Query deleted successfully.")
       })
-      .addCase(deleteQuery.rejected, (state, action) => {
+      .addCase(deleteQuery.rejected, () => {
         toast.error("Something went wrong. Refresh the page and try again.")
       })
   },

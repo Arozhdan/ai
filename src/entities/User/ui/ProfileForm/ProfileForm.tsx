@@ -4,10 +4,8 @@ import styles from "./ProfileForm.module.css"
 import { useSelector } from "react-redux"
 import { getUserData } from "../.."
 import { useFormik } from "formik"
-import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
 
 export const ProfileForm = () => {
-  const dispatch = useAppDispatch()
   const user = useSelector(getUserData)
   // const userImage = user?.image?.url ? __SERVER__ + user?.image?.url : null
   const formik = useFormik({
