@@ -7,7 +7,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   iconRight?: React.ReactNode
   iconLeft?: React.ReactNode
   align?: "left" | "center" | "stretch"
-  size?: "small" | "medium" | "large"
+  size?: "small" | "medium" | "large",
 }
 
 export const Button = ({

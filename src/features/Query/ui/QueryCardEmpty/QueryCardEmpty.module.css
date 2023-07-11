@@ -1,0 +1,3 @@
+.wrapper {
+  @apply flex flex-col items-center justify-center py-10 px-12 rounded-sm bg-white shadow-md;
+}

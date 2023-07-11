@@ -1,5 +1,5 @@
 .SidebarItem {
-  @apply relative flex items-center w-full min-w-[64px] transition duration-200 hover:bg-primary/10 select-none;
+  @apply relative flex items-center w-full  transition duration-200 hover:bg-primary/10 select-none;
 }
 .SidebarItemIcon {
   @apply flex items-center justify-center w-12 h-12 flex-shrink-0;

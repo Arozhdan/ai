@@ -1,4 +1,7 @@
 export { type UserSchema, type User, type UserResponse } from "./model/types/User.interface"
 export { getUserAuthData } from "./model/selectors/getUserAuthData"
-
+export { getUserData } from "./model/selectors/getUserData"
+export { getMe } from "./model/services/getMe/getMe"
 export { userReducer, userActions } from "./model/slice/userSlice"
+export { ProfileForm } from "./ui/ProfileForm/ProfileForm"
+export { uploadImage } from "./model/services/uploadImage/uploadImage"

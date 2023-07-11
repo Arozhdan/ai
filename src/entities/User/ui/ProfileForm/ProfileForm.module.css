@@ -1,0 +1,20 @@
+.page {
+  @apply p-6 lg:p-12 h-full grid grid-cols-2 gap-10;
+}
+
+.form {
+  @apply grid grid-cols-1 gap-10 h-full col-start-1 grid-rows-2;
+}
+
+.formGroup {
+  @apply grid grid-cols-1 gap-4;
+}
+.actions {
+  @apply mt-10 flex justify-end gap-4 row-start-2 self-end;
+}
+
+.drop {
+  @apply row-start-2 col-start-2 w-1/2 max-w-xs aspect-square rounded-lg border-2 border-dotted;
+  @apply bg-center bg-no-repeat bg-cover;
+  @apply transition hover:cursor-pointer hover:opacity-70 hover:border-gray-700;
+}

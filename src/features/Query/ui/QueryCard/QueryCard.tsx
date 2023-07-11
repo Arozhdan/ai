@@ -14,6 +14,7 @@ import {
 } from "@heroicons/react/24/outline"
 import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
 import { markSaved, markUnsaved } from "../.."
+import { deleteQuery } from "../../model/services/deleteQuery/deleteQuery"
 interface Props {
   query: Query
   className?: string
@@ -32,6 +33,12 @@ export const QueryCard = ({ query, className, active }: Props) => {
   }
 
   const menuRef = useRef<HTMLDivElement>(null)
+
+  const getMessage = (text: string) => {
+    const toRender = showMore ? text : text.slice(0, 150) + "..."
+    const replaceNewLine = toRender.replace(/\n/g, "<br />")
+    return <div className={styles.body} dangerouslySetInnerHTML={{ __html: replaceNewLine }} />
+  }
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -54,6 +61,8 @@ export const QueryCard = ({ query, className, active }: Props) => {
       case "unsave":
         dispatch(markUnsaved({ queryId: query.id }))
         break
+      case "delete":
+        dispatch(deleteQuery(query.id))
     }
   }
 
@@ -72,17 +81,21 @@ export const QueryCard = ({ query, className, active }: Props) => {
             {query.title}
           </Link>
         </Typography>
-        <Typography className={styles.body}>{query.result}</Typography>
+        <Typography as='div'>
+          {getMessage(query.result)}
+        </Typography>
       </div>
       <div className={styles.actions}>
-        <button
-          className={clsx(styles.more, {
-            [styles.active]: showMore,
-          })}
-          onClick={() => setShowMore((prev) => !prev)}
-        >
-          Show {showMore ? "Less" : "More"}
-        </button>
+        {query.result && query.result.length > 150 && (
+          <button
+            className={clsx(styles.more, {
+              [styles.active]: showMore,
+            })}
+            onClick={() => setShowMore((prev) => !prev)}
+          >
+            Show {showMore ? "Less" : "More"}
+          </button>
+        )}
       </div>
       {menuActive && (
         <div className={styles.menu} ref={menuRef}>
@@ -97,10 +110,7 @@ export const QueryCard = ({ query, className, active }: Props) => {
               Save
             </button>
           )}
-          <button className={styles.menuItem}>
-            <ChatBubbleBottomCenterIcon className={styles.menuItemIcon} /> Use template
-          </button>
-          <button className={styles.menuItem}>
+          <button className={styles.menuItem} onClick={() => handleAction("delete")}>
             <TrashIcon className={styles.menuItemIcon} /> Delete
           </button>
         </div>

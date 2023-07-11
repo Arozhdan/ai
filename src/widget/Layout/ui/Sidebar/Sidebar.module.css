@@ -1,5 +1,5 @@
 .sidebar {
-  @apply py-8 p-6 xl:p-12  flex flex-col h-screen relative overflow-scroll;
+  @apply py-8 p-6 xl:p-8  flex flex-col h-screen relative overflow-scroll;
   scrollbar-width: none;
 }
 
@@ -17,7 +17,7 @@
 .sidebarContentTop,
 .sidebarContentBottom,
 .sidebarContentMiddle {
-  @apply grid justify-start;
+  @apply grid gap-y-3;
 }
 .sidebarCollapseToggle {
   @apply flex items-center mt-6
@@ -29,14 +29,18 @@
   @apply rotate-180;
 }
 
+.sidebarCollapsed {
+  @apply px-4;
+}
+
 .sidebarCollapsed .sidebarCollapseToggle svg {
   @apply rotate-0;
 }
 .sidebarCollapsed .sidebarCollapseToggle {
-  @apply w-16;
+  @apply w-12;
 }
 .sidebarCollapsed .sidebarHeader {
-  @apply w-16 h-16 flex justify-center items-center mx-auto;
+  @apply w-12 h-12 flex justify-center items-center mx-auto;
 }
 
 .sidebarCollapsed .sidebarContentTop,

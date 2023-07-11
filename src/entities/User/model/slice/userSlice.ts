@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { UserSchema } from "../.."
+import { getMe, UserSchema } from "../.."
 import { JWT_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage"
-import { UserResponse } from "../types/User.interface"
+import { User, UserResponse } from "../types/User.interface"
+import { $api } from "@/shared/api/api"
 
 const initialState: UserSchema = {
   _inited: false,
@@ -18,6 +19,11 @@ export const userSlice = createSlice({
     setAuthData: (state, action: PayloadAction<UserResponse>) => {
       state.authData.user = action.payload.user
       state.authData.jwt = action.payload.jwt
+      $api.defaults.headers.authorization = `Bearer ${action.payload.jwt}`
+    },
+
+    setUserData: (state, action: PayloadAction<User>) => {
+      state.authData.user = action.payload
     },
 
     initAuthData: (state) => {

@@ -11,7 +11,7 @@
   @apply ml-6;
 }
 .body {
-  @apply line-clamp-3;
+  @apply line-clamp-6;
 }
 
 .cardExpanded .body {

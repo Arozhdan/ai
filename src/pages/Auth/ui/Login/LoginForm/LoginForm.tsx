@@ -3,12 +3,7 @@ import styles from "./LoginForm.module.css"
 import { Button, Input } from "@/shared/ui"
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import {
-  // getLoginError,
-  // getLoginIsLoading,
-  getLoginPassword,
-  getLoginUsername,
-} from "@/features/AuthByUserName"
+import { getLoginIsLoading, getLoginPassword, getLoginUsername } from "@/features/AuthByUserName"
 import { useSelector } from "react-redux"
 
 interface LoginFormProps {
@@ -19,8 +14,7 @@ interface LoginFormProps {
 export const LoginForm = ({ className, onSubmit }: LoginFormProps) => {
   const username = useSelector(getLoginUsername)
   const password = useSelector(getLoginPassword)
-  // const error = useSelector(getLoginError)
-  // const isLoading = useSelector(getLoginIsLoading)
+  const isLoading = useSelector(getLoginIsLoading)
 
   const formik = useFormik({
     initialValues: {
@@ -56,7 +50,12 @@ export const LoginForm = ({ className, onSubmit }: LoginFormProps) => {
             formik.touched.password && formik.errors.password ? formik.errors.password : undefined
           }
         />
-        <Button onClick={() => formik.handleSubmit()} variant='primary' type='submit'>
+        <Button
+          onClick={() => formik.handleSubmit()}
+          disabled={isLoading}
+          variant='primary'
+          type='submit'
+        >
           Войти
         </Button>
       </form>

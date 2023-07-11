@@ -1,23 +1,25 @@
 import { Suspense, useEffect } from "react"
 import AppRouter from "./providers/router/ui/AppRouter"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { getUserInited } from "@/entities/User/model/selectors/getUserInited"
-import { userActions } from "@/entities/User"
+import { getMe, userActions } from "@/entities/User"
 import { Loader } from "@/shared/ui"
 import { layoutActions } from "@/widget/Layout"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { queryActions } from "@/features/Query/model/slice/QuerySlice"
+import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
 
 function App() {
   const inited = useSelector(getUserInited)
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(userActions.initAuthData())
+    dispatch(getMe())
     dispatch(layoutActions.initLayout())
     dispatch(queryActions.initTab())
-  }, [dispatch])
+  }, [])
 
   return (
     <Suspense fallback={<Loader />}>

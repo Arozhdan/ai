@@ -24,6 +24,7 @@ export default defineConfig(({ command, mode }) => {
     define: {
       __IS_DEV__: mode === "development",
       __API__: JSON.stringify(env.VITE_API_URL),
+      __SERVER__: JSON.stringify(env.VITE_SERVER_URL),
     },
   }
 })

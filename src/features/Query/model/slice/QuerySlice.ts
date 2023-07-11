@@ -5,6 +5,8 @@ import { sendQuery } from "../services/sendQuery/sendQuery"
 import { fetchQueries } from "../services/fetchQueries/fetchQueries"
 import { ACTIVE_TAB_LOCALSTORAGE_KEY } from "@/shared/const/localstorage"
 import { markSaved, markUnsaved } from "../services/markSavedUnsaved/markSavedUnsaved"
+import { toast } from "react-toastify"
+import { deleteQuery } from "../services/deleteQuery/deleteQuery"
 
 const initialState: QuerySchema = {
   isLoading: false,
@@ -64,6 +66,7 @@ export const querySlice = createSlice({
         state.isLoading = false
         state.error = action.payload || null
         state.activeItem = null
+        toast.error("Something went wrong. Please try again later.")
       })
       .addCase(fetchQueries.pending, (state) => {
         state.isLoadingList = true
@@ -113,6 +116,15 @@ export const querySlice = createSlice({
         if (query) {
           query.store = true
         }
+      })
+      .addCase(deleteQuery.pending, (state, action) => {
+        state.list = state.list.filter((item) => item.id !== action.meta.arg)
+      })
+      .addCase(deleteQuery.fulfilled, (state, action) => {
+        toast.success("Query deleted successfully.")
+      })
+      .addCase(deleteQuery.rejected, (state, action) => {
+        toast.error("Something went wrong. Refresh the page and try again.")
       })
   },
 })

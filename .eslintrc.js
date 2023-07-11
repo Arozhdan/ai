@@ -29,16 +29,16 @@ module.exports = {
         "quotes": ["error", "double"],
         "no-duplicate-imports": "error",
         "@typescript-eslint/ban-ts-comment": "off",
-        "react/display-name" : "off",
+        "react/display-name": "off",
     },
     settings: {
         "import/resolver": {
-          "typescript": {}
+            "typescript": {}
         }
     },
-    globals:{
-        __IS_DEV__ : true,
+    globals: {
+        __IS_DEV__: true,
         __API__: true,
-        
+        __UPLOADS__: true,
     }
 }

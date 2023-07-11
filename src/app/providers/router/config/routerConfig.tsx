@@ -1,6 +1,7 @@
 import { About } from "@/pages/About"
 import { Login, Signup } from "@/pages/Auth"
 import { Main } from "@/pages/Main"
+import { Profile } from "@/pages/Profile"
 import { Prompt } from "@/pages/Prompt"
 import { RouteProps } from "react-router-dom"
 
@@ -12,6 +13,7 @@ export enum AppRoutes {
   MAIN = "main",
   ABOUT = "about",
   LOGIN = "login",
+  PROFILE = "profile",
   SIGNUP = "signup",
   PROMPT = "prompt/:slug",
   // last
@@ -22,6 +24,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: "/",
   [AppRoutes.ABOUT]: "/about",
   [AppRoutes.LOGIN]: "/login",
+  [AppRoutes.PROFILE]: "/profile",
   [AppRoutes.SIGNUP]: "/signup",
   [AppRoutes.PROMPT]: "/prompts/:slug",
   // последний
@@ -43,6 +46,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     path: RoutePath.login,
     authOnly: false,
     element: <Login />,
+  },
+  [AppRoutes.PROFILE]: {
+    path: RoutePath.profile,
+    authOnly: true,
+    element: <Profile />,
   },
   [AppRoutes.SIGNUP]: {
     path: RoutePath.signup,

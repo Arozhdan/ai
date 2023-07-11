@@ -4,6 +4,7 @@ import { QueryCard, getRelatedQueries } from "@/features/Query"
 import { useSelector } from "react-redux"
 import styles from "./QueryList.module.css"
 import { Tab } from "./Tab/Tab"
+import { QueryCardEmpty } from "../QueryCardEmpty/QueryCardEmpty"
 
 export const QueryList = () => {
   const selectedPrompt = useSelector(getSelectedPrompt)
@@ -17,6 +18,7 @@ export const QueryList = () => {
         {filteredQueries?.map((query) => (
           <QueryCard key={query.id} query={query} />
         ))}
+        {filteredQueries?.length === 0 && <QueryCardEmpty />}
       </div>
     </div>
   )

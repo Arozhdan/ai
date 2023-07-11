@@ -12,6 +12,8 @@ import { sendQuery } from "../../model/services/sendQuery/sendQuery"
 import { useSetPrompt } from "../../lib/useSetPrompt"
 import { getIsLoading } from "../../model/selectors/getIsLoading/getIsLoading"
 import { RequestLoader } from "../RequestLoader/RequestLoader"
+import { useLocation } from "react-router-dom"
+import { useEffect } from "react"
 
 interface FormProps {
   className?: string
@@ -23,10 +25,16 @@ const tovOptions = ["PROFESSIONAL", "CASUAL", "FRIENDLY", "INTIMATE"]
 export const Form = ({ className }: FormProps) => {
   const prompt = useSelector(getSelectedPrompt)
   const dispatch = useAppDispatch()
-  // const { tov, lang, input } = getFormFields(prompt?.attributes.prompt)
 
   const newQuery = useSelector(getNewQuery)
   const isLoading = useSelector(getIsLoading)
+
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    formik.resetForm()
+  }, [pathname])
+
 
   const formik = useFormik({
     initialValues: {

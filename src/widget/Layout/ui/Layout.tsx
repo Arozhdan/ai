@@ -8,9 +8,9 @@ import { useSelector } from "react-redux"
 import { getSelectedPrompt } from "@/entities/Prompt"
 import { getCollapsed, layoutActions } from ".."
 import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
-import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline"
-import { Bars3Icon } from "@heroicons/react/20/solid"
-import { useLocation } from "react-router-dom"
+import { Bars3Icon, UserCircleIcon } from "@heroicons/react/20/solid"
+import { useLocation, useNavigate } from "react-router-dom"
+import { getUserData } from "@/entities/User"
 
 const Layout = memo((props: React.PropsWithChildren) => {
   const sidebarCollapsed = useSelector(getCollapsed)
@@ -18,6 +18,11 @@ const Layout = memo((props: React.PropsWithChildren) => {
   const dispatch = useAppDispatch()
   const location = useLocation()
   const path = location.pathname
+
+  const user = useSelector(getUserData)
+  const navigate = useNavigate()
+
+  const navigateToProfile = () => navigate("/profile")
 
   useEffect(() => {
     const windowWidth = window.innerWidth
@@ -46,8 +51,13 @@ const Layout = memo((props: React.PropsWithChildren) => {
             </Typography>
           </div>
         )}
-        <Button size='small' variant='secondary' iconRight={<QuestionMarkCircleIcon />}>
-          Help
+        <Button
+          size='small'
+          variant='ghost'
+          iconRight={<UserCircleIcon />}
+          onClick={navigateToProfile}
+        >
+          {user?.username}
         </Button>
         <button
           className={clsx(styles.collapseButton, {
