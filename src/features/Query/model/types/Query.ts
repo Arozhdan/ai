@@ -11,15 +11,21 @@ export interface Query {
   user: User
   prompt: Prompt["attributes"]
   input: string
-  tov: "PROFESSIONAL" | "CASUAL" | "FRIENDLY" | "FAMILIAR" | "INTIMATE" | "OTHER"
-  lang: "ENGLISH" | "RUSSIAN"
+  tov: string
+  lang: string
 }
 
 export interface QueryRequest {
   relatedPrompt: number
   query: string
   input: string
-  tov: "PROFESSIONAL" | "CASUAL" | "FRIENDLY" | "FAMILIAR" | "INTIMATE" | "OTHER"
-  lang: "ENGLISH" | "RUSSIAN"
+  tov: {
+    label: string
+    value: string
+  }
+  lang: {
+    label: string
+    value: string
+  }
   title: string
 }

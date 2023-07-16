@@ -24,6 +24,9 @@
   text-primary border-primary
   justify-center w-full mx-auto h-10 border;
 }
+.sidebarCollapseToggle svg {
+  @apply w-6;
+}
 
 .sidebarCollapseToggle svg {
   @apply rotate-180;

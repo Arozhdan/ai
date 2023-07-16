@@ -66,7 +66,7 @@ export const querySlice = createSlice({
         state.isLoading = false
         state.error = action.payload || null
         state.activeItem = null
-        toast.error("Something went wrong. Please try again later.")
+        toast.error("Упс, что-то пошло не так")
       })
       .addCase(fetchQueries.pending, (state) => {
         state.isLoadingList = true
@@ -121,10 +121,10 @@ export const querySlice = createSlice({
         state.list = state.list.filter((item) => item.id !== action.meta.arg)
       })
       .addCase(deleteQuery.fulfilled, () => {
-        toast.success("Query deleted successfully.")
+        toast.success("Запрос успешно удален.")
       })
       .addCase(deleteQuery.rejected, () => {
-        toast.error("Something went wrong. Refresh the page and try again.")
+        toast.error("Упс, что-то пошло не так. Попробуйте еще раз.")
       })
   },
 })

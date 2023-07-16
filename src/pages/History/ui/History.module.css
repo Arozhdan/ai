@@ -1,0 +1,14 @@
+.page {
+  @apply p-6 lg:p-12;
+}
+
+.list {
+  @apply mt-10 grid gap-7;
+}
+.filterWrapper {
+  @apply flex;
+}
+
+.filterButton {
+  @apply ml-auto;
+}
