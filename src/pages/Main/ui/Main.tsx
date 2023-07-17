@@ -33,9 +33,9 @@ const Main = () => {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.header}>
-        <Input value={query || ""} onChange={handleChange} label='Фильровать...' />
-      </h1>
+      <div className={styles.header}>
+        <Input value={query || ""} onChange={handleChange} label='Найти...' />
+      </div>
       <div className={styles.wrapper}>
         {isLoading && <Loader />}
         {filteredPrompts?.map((prompt) => (

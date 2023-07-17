@@ -5,10 +5,11 @@ import { Sidebar } from "./Sidebar/Sidebar"
 import { Button, Typography } from "@/shared/ui"
 import clsx from "clsx"
 import { useSelector } from "react-redux"
-import { getSelectedPrompt } from "@/entities/Prompt"
+import { addToFavorites, getSelectedPrompt, removeFromFavorites } from "@/entities/Prompt"
 import { getCollapsed, layoutActions } from ".."
 import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
-import { Bars3Icon, UserCircleIcon } from "@heroicons/react/20/solid"
+import { Bars3Icon, StarIcon as StarSolid, UserCircleIcon } from "@heroicons/react/20/solid"
+import { StarIcon as StarOutlined } from "@heroicons/react/24/outline"
 import { useLocation, useNavigate } from "react-router-dom"
 import { getUserData } from "@/entities/User"
 
@@ -20,9 +21,31 @@ const Layout = memo((props: React.PropsWithChildren) => {
   const path = location.pathname
 
   const user = useSelector(getUserData)
+  const userPrompts = user?.favPrompts || []
   const navigate = useNavigate()
 
   const navigateToProfile = () => navigate("/profile")
+
+  const handleStarred = () => {
+    if (!selectedPrompt) return
+
+    const isStarred = userPrompts.some((prompt) => prompt.id === selectedPrompt.id)
+    if (isStarred) {
+      dispatch(
+        removeFromFavorites({
+          ...selectedPrompt.attributes,
+          id: selectedPrompt.id,
+        }),
+      )
+    } else {
+      dispatch(
+        addToFavorites({
+          ...selectedPrompt.attributes,
+          id: selectedPrompt.id,
+        }),
+      )
+    }
+  }
 
   useEffect(() => {
     const windowWidth = window.innerWidth
@@ -43,9 +66,18 @@ const Layout = memo((props: React.PropsWithChildren) => {
       >
         {selectedPrompt && (
           <div>
-            <Typography variant='h3' as='h1' className='text-primary line-clamp-1'>
-              {selectedPrompt.attributes.name}
-            </Typography>
+            <div className={styles.title}>
+              <Typography variant='h3' as='h1' className='text-primary line-clamp-1'>
+                {selectedPrompt.attributes.name}
+              </Typography>
+              <button onClick={handleStarred}>
+                {userPrompts.some((prompt) => prompt.id === selectedPrompt.id) ? (
+                  <StarSolid className={styles.starIcon} />
+                ) : (
+                  <StarOutlined className={styles.starIcon} />
+                )}
+              </button>
+            </div>
             <Typography className='line-clamp-1'>
               {selectedPrompt.attributes.description}
             </Typography>

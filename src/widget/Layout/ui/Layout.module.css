@@ -31,6 +31,15 @@
   grid-template-columns: 81px auto;
 }
 
+.title {
+  @apply flex items-center;
+}
+
+.starIcon {
+  @apply ml-2 w-6 text-primary;
+  @apply transition duration-200 hover:opacity-50;
+}
+
 @media (max-width: 1280px) {
   .wrapper {
     grid-template-columns: auto auto;

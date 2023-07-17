@@ -9,3 +9,4 @@ export { getPromptsListIsLoading } from "./model/selectors/getPromptListIsLoadin
 export { getFilteredPrompts } from "./model/selectors/getFilteredPrompts/getFilteredPrompts"
 export { getPromptQuery } from "./model/selectors/getPromptQuery/getPromptQuery"
 export { getSelectedPrompt } from "./model/selectors/getSelectedPrompt/getSelectedPrompt"
+export { removeFromFavorites, addToFavorites } from "./model/services/favoritePrompt/favoritePrompt"

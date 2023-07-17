@@ -3,6 +3,7 @@ import { UserSchema } from "../.."
 import { JWT_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage"
 import { User, UserResponse } from "../types/User.interface"
 import { $api } from "@/shared/api/api"
+import { Prompt } from "@/entities/Prompt"
 
 const initialState: UserSchema = {
   _inited: false,
@@ -10,6 +11,7 @@ const initialState: UserSchema = {
     jwt: null,
     user: null,
   },
+  isLoading: false,
 }
 
 export const userSlice = createSlice({
@@ -24,6 +26,21 @@ export const userSlice = createSlice({
 
     setUserData: (state, action: PayloadAction<User>) => {
       state.authData.user = action.payload
+    },
+
+    setIsUserDataLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload
+    },
+
+    addToFavorites: (state, action: PayloadAction<Prompt["attributes"]>) => {
+      state.authData.user?.favPrompts.push(action.payload)
+    },
+
+    removeFromFavorites: (state, action: PayloadAction<Prompt["attributes"]>) => {
+      if (!state.authData.user?.favPrompts) return
+      state.authData.user.favPrompts = state.authData.user?.favPrompts.filter(
+        (prompt) => prompt.id !== action.payload.id,
+      )
     },
 
     initAuthData: (state) => {

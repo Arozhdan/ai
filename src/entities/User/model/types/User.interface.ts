@@ -1,3 +1,5 @@
+import { Prompt } from "@/entities/Prompt"
+
 export interface UserResponse {
   jwt: string
   user: User
@@ -29,6 +31,7 @@ export interface User {
     createdAt: string
     updatedAt: string
   }
+  favPrompts: Prompt["attributes"][]
 }
 
 export interface Formats {
@@ -56,4 +59,5 @@ export interface UserSchema {
   }
   jwt?: string
   _inited: boolean
+  isLoading: boolean
 }

@@ -13,9 +13,9 @@ export const markSaved = createAsyncThunk<undefined, Params, ThunkConfig<string>
     try {
       const { queryId } = params
       await extra.api.post("/query-save", { queryId })
-      toast.success("Query saved")
+      toast.success("Результат сохранен")
     } catch (e) {
-      toast.error("Error saving query")
+      toast.error("Ошибка сохранения запроса")
       return rejectWithValue("error")
     }
   },
@@ -28,9 +28,9 @@ export const markUnsaved = createAsyncThunk<undefined, Params, ThunkConfig<strin
     try {
       const { queryId } = params
       await extra.api.post("/query-unsave", { queryId })
-      toast.success("Query unsaved")
+      toast.success("Результат удален из сохраненных")
     } catch (e) {
-      toast.error("Error unsaving query")
+      toast.error("Ошибка удаления запроса")
       return rejectWithValue("error")
     }
   },

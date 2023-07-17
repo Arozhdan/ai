@@ -10,7 +10,7 @@ import { useSelector } from "react-redux"
 import { getCollapsed, layoutActions } from "../.."
 import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
 import { ArrowRightIcon, UserCircleIcon } from "@heroicons/react/20/solid"
-import { ClockIcon, QueueListIcon, SparklesIcon } from "@heroicons/react/24/outline"
+import { BookmarkSquareIcon, QueueListIcon, SparklesIcon } from "@heroicons/react/24/outline"
 import { getUserData } from "@/entities/User"
 
 interface SidebarProps {
@@ -51,8 +51,13 @@ export const Sidebar: FC<SidebarProps> = ({ onCollapse }) => {
           >
             История
           </SidebarItem>
-          <SidebarItem collapsed={collapsed} to={"/"} icon={<ClockIcon />}>
-            Сохраненные
+          <SidebarItem
+            collapsed={collapsed}
+            active={path === "/favorites"}
+            to={"/favorites"}
+            icon={<BookmarkSquareIcon />}
+          >
+            Избранное
           </SidebarItem>
         </div>
         <div className={styles.sidebarContentMiddle}>

@@ -1,5 +1,6 @@
 import { About } from "@/pages/About"
 import { Login, Signup } from "@/pages/Auth"
+import { Favorites } from "@/pages/Favorites"
 import { History } from "@/pages/History"
 import { Main } from "@/pages/Main"
 import { Profile } from "@/pages/Profile"
@@ -14,6 +15,7 @@ export enum AppRoutes {
   MAIN = "main",
   ABOUT = "about",
   HISTORY = "history",
+  FAVORITES = "favorites",
   LOGIN = "login",
   PROFILE = "profile",
   SIGNUP = "signup",
@@ -26,6 +28,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: "/",
   [AppRoutes.ABOUT]: "/about",
   [AppRoutes.HISTORY]: "/history",
+  [AppRoutes.FAVORITES]: "/favorites",
   [AppRoutes.LOGIN]: "/login",
   [AppRoutes.PROFILE]: "/profile",
   [AppRoutes.SIGNUP]: "/signup",
@@ -49,6 +52,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     path: RoutePath.history,
     authOnly: true,
     element: <History />,
+  },
+  [AppRoutes.FAVORITES]: {
+    path: RoutePath.favorites,
+    authOnly: true,
+    element: <Favorites />,
   },
   [AppRoutes.LOGIN]: {
     path: RoutePath.login,
