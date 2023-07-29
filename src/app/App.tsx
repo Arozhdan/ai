@@ -2,7 +2,7 @@ import { Suspense, useEffect } from "react"
 import AppRouter from "./providers/router/ui/AppRouter"
 import { useSelector } from "react-redux"
 import { getUserInited } from "@/entities/User/model/selectors/getUserInited"
-import { getMe, userActions } from "@/entities/User"
+import { getMe, getUserAuthData, userActions } from "@/entities/User"
 import { Loader } from "@/shared/ui"
 import { layoutActions } from "@/widget/Layout"
 import { ToastContainer } from "react-toastify"
@@ -13,13 +13,19 @@ import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
 function App() {
   const inited = useSelector(getUserInited)
   const dispatch = useAppDispatch()
+  const user = useSelector(getUserAuthData)
 
   useEffect(() => {
     dispatch(userActions.initAuthData())
-    dispatch(getMe())
     dispatch(layoutActions.initLayout())
     dispatch(queryActions.initTab())
   }, [])
+
+  useEffect(() => {
+    if (user.jwt) {
+      dispatch(getMe())
+    }
+  }, [inited])
 
   return (
     <Suspense fallback={<Loader />}>
