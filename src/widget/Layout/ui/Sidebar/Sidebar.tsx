@@ -10,12 +10,7 @@ import { useSelector } from "react-redux"
 import { getCollapsed, layoutActions } from "../.."
 import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
 import { ArrowRightIcon, UserCircleIcon } from "@heroicons/react/20/solid"
-import {
-  BookmarkSquareIcon,
-  HeartIcon,
-  QueueListIcon,
-  SparklesIcon,
-} from "@heroicons/react/24/outline"
+import { HeartIcon, QueueListIcon, SparklesIcon } from "@heroicons/react/24/outline"
 import { getUserData } from "@/entities/User"
 
 interface SidebarProps {

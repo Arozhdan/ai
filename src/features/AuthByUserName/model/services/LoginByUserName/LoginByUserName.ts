@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { UserResponse, userActions } from "@/entities/User"
+import { UserResponse } from "@/entities/User"
 import { JWT_LOCALSTORAGE_KEY, USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage"
 import { ThunkConfig } from "@/app/providers/StoreProvider/config/StateSchema"
 import { $api } from "@/shared/api/api"
