@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 import { HistoryCard } from "./HistoryCard/HistoryCard"
 import { Query } from "@/features/Query/model/types/Query"
 import { promptActions } from "@/entities/Prompt"
+import { QueryCardEmpty } from "@/features/Query/ui/QueryCardEmpty/QueryCardEmpty"
 
 const History = () => {
   const dispatch = useAppDispatch()
@@ -63,6 +64,11 @@ const History = () => {
           {list?.map((item) => (
             <HistoryCard query={item} key={item.id} />
           ))}
+          {!list?.length && (
+            <div className={styles.empty}>
+              <QueryCardEmpty />
+            </div>
+          )}
         </div>
       </div>
     </>
