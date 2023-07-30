@@ -99,16 +99,16 @@ export const QueryCard = ({ query, className, active }: Props) => {
           {query.store ? (
             <button className={styles.menuItem} onClick={() => handleAction("unsave")}>
               <BookmarkSlashIcon className={styles.menuItemIcon} />
-              Unsave
+              Убрать из сохраненных
             </button>
           ) : (
             <button className={styles.menuItem} onClick={() => handleAction("save")}>
               <BookmarkIcon className={styles.menuItemIcon} />
-              Save
+              Сохранить
             </button>
           )}
           <button className={styles.menuItem} onClick={() => handleAction("delete")}>
-            <TrashIcon className={styles.menuItemIcon} /> Delete
+            <TrashIcon className={styles.menuItemIcon} /> Удалить
           </button>
         </div>
       )}

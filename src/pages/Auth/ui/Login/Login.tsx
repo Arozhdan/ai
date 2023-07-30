@@ -5,7 +5,7 @@ import { LoginForm } from "./LoginForm/LoginForm"
 import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
 import { useCallback, useEffect } from "react"
 import { loginByUsername } from "@/features/AuthByUserName/model/services/LoginByUserName/LoginByUserName"
-import { getUserAuthData } from "@/entities/User"
+import { getUserAuthData, userActions } from "@/entities/User"
 import { useSelector } from "react-redux"
 
 const Login = () => {
@@ -20,17 +20,22 @@ const Login = () => {
     }
   }, [auth.jwt])
 
-  const handleSubmit = useCallback(async (values: { email: string; password: string }) => {
-    const result = await dispatch(
-      loginByUsername({
-        username: values.email,
-        password: values.password,
-      }),
-    )
-    if (result.meta.requestStatus === "fulfilled") {
-      navigate("/")
-    }
-  }, [])
+  const handleSubmit = useCallback(
+    async (values: { email: string; password: string }) => {
+      const result = await dispatch(
+        loginByUsername({
+          username: values.email,
+          password: values.password,
+        }),
+      )
+      if (result.meta.requestStatus === "fulfilled") {
+        dispatch(userActions.initAuthData())
+        if (!auth.jwt) return
+        navigate("/")
+      }
+    },
+    [auth.jwt],
+  )
 
   return (
     <div className={styles.login}>

@@ -49,6 +49,7 @@ export const userSlice = createSlice({
       if (user && jwt) {
         state.authData.user = JSON.parse(user)
         state.authData.jwt = jwt
+        $api.defaults.headers.authorization = `Bearer ${jwt}`
       }
       state._inited = true
     },

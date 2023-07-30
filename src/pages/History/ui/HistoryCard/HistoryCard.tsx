@@ -99,7 +99,7 @@ export const HistoryCard: FC<Props> = ({ className, query }) => {
           {query.store ? (
             <button className={styles.menuItem} onClick={() => handleAction("unsave")}>
               <BookmarkSlashIcon className={styles.menuItemIcon} />
-              Удалить из сохраненных
+              Убрать из сохраненных
             </button>
           ) : (
             <button className={styles.menuItem} onClick={() => handleAction("save")}>

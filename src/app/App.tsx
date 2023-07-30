@@ -20,12 +20,11 @@ function App() {
     dispatch(layoutActions.initLayout())
     dispatch(queryActions.initTab())
   }, [])
-
   useEffect(() => {
     if (user.jwt) {
       dispatch(getMe())
     }
-  }, [inited])
+  }, [user.jwt])
 
   return (
     <Suspense fallback={<Loader />}>

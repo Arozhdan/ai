@@ -13,9 +13,12 @@ import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
 import { useSelector } from "react-redux"
 import { Input, Loader } from "@/shared/ui"
 import { StateSchema } from "@/app/providers/StoreProvider/config/StateSchema"
+import { getUserAuthData } from "@/entities/User"
 
 const Main = () => {
   const dispatch = useAppDispatch()
+  const user = useSelector(getUserAuthData)
+
   const isLoading = useSelector(getPromptsListIsLoading)
   const query = useSelector(getPromptQuery)
   const filteredPrompts = useSelector((state: StateSchema) =>
@@ -23,9 +26,10 @@ const Main = () => {
   )
 
   useEffect(() => {
+    if (!user.jwt) return
     if (!filteredPrompts?.length) dispatch(fetchPromptsList({}))
     dispatch(promptActions.unsetSelectedPrompt())
-  }, [])
+  }, [user.jwt])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(promptActions.setPromptsListQuery(e.target.value))

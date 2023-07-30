@@ -8,8 +8,8 @@ import { useSelector } from "react-redux"
 import { addToFavorites, getSelectedPrompt, removeFromFavorites } from "@/entities/Prompt"
 import { getCollapsed, layoutActions } from ".."
 import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
-import { Bars3Icon, StarIcon as StarSolid, UserCircleIcon } from "@heroicons/react/20/solid"
-import { StarIcon as StarOutlined } from "@heroicons/react/24/outline"
+import { Bars3Icon, HeartIcon, UserCircleIcon } from "@heroicons/react/20/solid"
+import { HeartIcon as HeartOutlined } from "@heroicons/react/24/outline"
 import { useLocation, useNavigate } from "react-router-dom"
 import { getUserData } from "@/entities/User"
 
@@ -72,9 +72,9 @@ const Layout = memo((props: React.PropsWithChildren) => {
               </Typography>
               <button onClick={handleStarred}>
                 {userPrompts.some((prompt) => prompt.id === selectedPrompt.id) ? (
-                  <StarSolid className={styles.starIcon} />
+                  <HeartIcon className={styles.starIcon} />
                 ) : (
-                  <StarOutlined className={styles.starIcon} />
+                  <HeartOutlined className={`${styles.starIcon} ${styles.starIconOutlined}`} />
                 )}
               </button>
             </div>

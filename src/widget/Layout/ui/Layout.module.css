@@ -36,8 +36,11 @@
 }
 
 .starIcon {
-  @apply ml-2 w-6 text-primary;
+  @apply ml-2 w-6 text-red-500;
   @apply transition duration-200 hover:opacity-50;
+}
+.starIconOutlined {
+  @apply text-gray-300;
 }
 
 @media (max-width: 1280px) {

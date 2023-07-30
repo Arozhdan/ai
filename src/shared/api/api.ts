@@ -12,13 +12,17 @@ export const $api = axios.create({
 })
 
 // interceptors
-$api.interceptors.response.use((response) => {
-  return response
-}, (error) => {
-  if (error.response.status === 401) {
-    toast.error("Unauthorized")
-    localStorage.removeItem(JWT_LOCALSTORAGE_KEY)
-    window.location.reload()
-  }
-  return Promise.reject(error)
-})
+$api.interceptors.response.use(
+  (response) => {
+    return response
+  },
+  (error) => {
+    if (error.response.status === 401) {
+      toast.error("Unauthorized")
+      alert("Unauthorized, the page will be reloaded")
+      localStorage.removeItem(JWT_LOCALSTORAGE_KEY)
+      window.location.reload()
+    }
+    return Promise.reject(error)
+  },
+)
