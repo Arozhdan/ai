@@ -7,6 +7,7 @@ import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
 import { useEffect, useState } from "react"
 import { HistoryCard } from "./HistoryCard/HistoryCard"
 import { Query } from "@/features/Query/model/types/Query"
+import { promptActions } from "@/entities/Prompt"
 
 const History = () => {
   const dispatch = useAppDispatch()
@@ -32,6 +33,7 @@ const History = () => {
   useEffect(() => {
     if (!queryList?.length) dispatch(fetchQueries())
     setList(filterListByNameOrInput(search))
+    dispatch(promptActions.unsetSelectedPrompt())
   }, [])
 
   useEffect(() => {
