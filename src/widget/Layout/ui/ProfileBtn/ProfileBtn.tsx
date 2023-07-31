@@ -10,7 +10,7 @@ import {
   ArrowLeftOnRectangleIcon,
   CreditCardIcon,
 } from "@heroicons/react/20/solid"
-import { useLocation, useNavigate, useNavigation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
 
 interface Props {
