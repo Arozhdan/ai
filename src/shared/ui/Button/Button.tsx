@@ -3,11 +3,11 @@ import clsx from "clsx"
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
-  variant?: "primary" | "secondary" | "ghost"
+  variant?: "primary" | "secondary" | "ghost" | "white" | "danger"
   iconRight?: React.ReactNode
   iconLeft?: React.ReactNode
   align?: "left" | "center" | "stretch"
-  size?: "small" | "medium" | "large",
+  size?: "small" | "medium" | "large"
 }
 
 export const Button = ({

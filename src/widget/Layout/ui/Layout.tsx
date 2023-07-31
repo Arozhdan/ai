@@ -2,16 +2,17 @@
 import { memo, useEffect } from "react"
 import styles from "./Layout.module.css"
 import { Sidebar } from "./Sidebar/Sidebar"
-import { Button, Typography } from "@/shared/ui"
+import { Typography } from "@/shared/ui"
 import clsx from "clsx"
 import { useSelector } from "react-redux"
 import { addToFavorites, getSelectedPrompt, removeFromFavorites } from "@/entities/Prompt"
 import { getCollapsed, layoutActions } from ".."
 import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
-import { Bars3Icon, HeartIcon, UserCircleIcon } from "@heroicons/react/20/solid"
+import { Bars3Icon, HeartIcon } from "@heroicons/react/20/solid"
 import { HeartIcon as HeartOutlined } from "@heroicons/react/24/outline"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 import { getUserData } from "@/entities/User"
+import { ProfileBtn } from "./ProfileBtn/ProfileBtn"
 
 const Layout = memo((props: React.PropsWithChildren) => {
   const sidebarCollapsed = useSelector(getCollapsed)
@@ -22,9 +23,6 @@ const Layout = memo((props: React.PropsWithChildren) => {
 
   const user = useSelector(getUserData)
   const userPrompts = user?.favPrompts || []
-  const navigate = useNavigate()
-
-  const navigateToProfile = () => navigate("/profile")
 
   const handleStarred = () => {
     if (!selectedPrompt) return
@@ -83,14 +81,7 @@ const Layout = memo((props: React.PropsWithChildren) => {
             </Typography>
           </div>
         )}
-        <Button
-          size='small'
-          variant='ghost'
-          iconRight={<UserCircleIcon />}
-          onClick={navigateToProfile}
-        >
-          {user?.username}
-        </Button>
+        <ProfileBtn />
         <button
           className={clsx(styles.collapseButton, {
             [styles.collapseButtonCollapsed]: sidebarCollapsed,

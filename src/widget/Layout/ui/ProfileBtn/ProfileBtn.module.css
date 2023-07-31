@@ -1,0 +1,11 @@
+.btn {
+  @apply relative w-56;
+}
+
+.menu {
+  @apply absolute top-full right-0 w-full bg-white rounded-sm shadow-lg;
+}
+
+.menuItem {
+  @apply w-full text-left;
+}

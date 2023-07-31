@@ -58,6 +58,7 @@ export const userSlice = createSlice({
       state.authData.jwt = null
       localStorage.removeItem(USER_LOCALSTORAGE_KEY)
       localStorage.removeItem(JWT_LOCALSTORAGE_KEY)
+      $api.defaults.headers.authorization = ""
     },
   },
 })
