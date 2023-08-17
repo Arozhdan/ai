@@ -54,6 +54,8 @@ export const Input: FC<InputProps> = ({
             className={clsx(styles.icon, styles.eye)}
             onMouseDown={() => setFieldType("text")}
             onMouseUp={() => setFieldType("password")}
+            onTouchStart={() => setFieldType("text")}
+            onTouchEnd={() => setFieldType("password")}
           >
             <EyeIcon />
           </div>

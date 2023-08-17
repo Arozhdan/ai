@@ -81,7 +81,7 @@ const Layout = memo((props: React.PropsWithChildren) => {
             </Typography>
           </div>
         )}
-        <ProfileBtn />
+        <ProfileBtn className='hidden md:block' />
         <button
           className={clsx(styles.collapseButton, {
             [styles.collapseButtonCollapsed]: sidebarCollapsed,

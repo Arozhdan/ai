@@ -179,14 +179,14 @@ export const Form = ({ className }: FormProps) => {
             error={(formik.touched.input && formik.errors.input) || ""}
             placeholder={prompt?.attributes.helpText}
             variant='outlined'
-            className='col-span-2'
+            className={styles.input}
             label='Контекст'
           />
           <Select
             options={langOptions}
             activeOption={formik.values.lang}
             label='Язык'
-            className='col-span-2'
+            className={styles.lang}
             onChange={(value) => {
               formik.setFieldValue("lang", value)
             }}
@@ -195,7 +195,7 @@ export const Form = ({ className }: FormProps) => {
             options={tovOptions}
             activeOption={formik.values.tov}
             label='Тон и стиль'
-            className='col-span-2'
+            className={styles.tov}
             onChange={(value) => formik.setFieldValue("tov", value)}
           />
         </div>
@@ -206,10 +206,10 @@ export const Form = ({ className }: FormProps) => {
             onClick={handleClear}
             disabled={!formik.dirty || isLoading}
           >
-            Clear form
+            Очистить
           </Button>
           <Button variant='primary' size='small' type='submit' disabled={isLoading}>
-            Generate
+            Сгенерировать
           </Button>
         </div>
       </form>

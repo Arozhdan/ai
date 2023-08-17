@@ -25,32 +25,34 @@ export const Tab = ({ className }: Props) => {
 
   return (
     <div className={clsx(styles.tabs, className)}>
-      <button
-        className={clsx(styles.tab, {
-          [styles.active]: activeTab === QueryTab.RELATED,
-        })}
-        onClick={() => handleClick(QueryTab.RELATED)}
-      >
-        <ChatBubbleOvalLeftEllipsisIcon /> Соответствие
-      </button>
-      <button
-        className={clsx(styles.tab, {
-          [styles.active]: activeTab === QueryTab.HISTORY,
-        })}
-        onClick={() => handleClick(QueryTab.HISTORY)}
-      >
-        <ClockIcon />
-        История
-      </button>
-      <button
-        className={clsx(styles.tab, {
-          [styles.active]: activeTab === QueryTab.SAVED,
-        })}
-        onClick={() => handleClick(QueryTab.SAVED)}
-      >
-        <BookmarkSquareIcon />
-        Сохраненное
-      </button>
+      <div className={styles.row}>
+        <button
+          className={clsx(styles.tab, {
+            [styles.active]: activeTab === QueryTab.RELATED,
+          })}
+          onClick={() => handleClick(QueryTab.RELATED)}
+        >
+          <ChatBubbleOvalLeftEllipsisIcon /> Соответствие
+        </button>
+        <button
+          className={clsx(styles.tab, {
+            [styles.active]: activeTab === QueryTab.HISTORY,
+          })}
+          onClick={() => handleClick(QueryTab.HISTORY)}
+        >
+          <ClockIcon />
+          История
+        </button>
+        <button
+          className={clsx(styles.tab, {
+            [styles.active]: activeTab === QueryTab.SAVED,
+          })}
+          onClick={() => handleClick(QueryTab.SAVED)}
+        >
+          <BookmarkSquareIcon />
+          Сохраненное
+        </button>
+      </div>
     </div>
   )
 }

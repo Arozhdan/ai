@@ -2,14 +2,22 @@
   @apply h-full relative overflow-y-auto;
 }
 .form {
-  @apply h-full relative p-6 lg:p-12 pb-20 overflow-y-auto;
+  @apply h-full relative py-6 px-2 md:px-6 lg:p-12 pb-20 overflow-y-auto;
 }
 .header {
   @apply mb-8;
 }
 .inputContainer {
-  @apply grid grid-cols-2 gap-3 lg:gap-4;
+  @apply grid grid-cols-12 gap-3 lg:gap-4;
+}
+
+.input {
+  @apply col-span-12;
+}
+.lang,
+.tov {
+  @apply col-span-6 lg:col-span-12;
 }
 .actions {
-  @apply flex justify-between absolute bottom-0 left-0 w-full py-3 lg:py-4 px-6 lg:px-8 border-t border-gray-300;
+  @apply flex justify-between absolute bottom-0 left-0 w-full py-3 lg:py-4 px-2 md:px-6 lg:px-8 border-t border-gray-300;
 }

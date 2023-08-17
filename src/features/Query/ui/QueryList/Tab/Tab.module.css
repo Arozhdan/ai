@@ -1,5 +1,15 @@
 .tabs {
-  @apply px-7 py-3 sticky top-0 left-0 w-full flex bg-indigo-50 border-b border-gray-300 shadow-sm z-10;
+  @apply sticky top-0 left-0 w-full max-w-[100vw] bg-indigo-50 border-b border-gray-300 shadow-sm z-10;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.row {
+  @apply flex items-center px-7 py-3 overflow-auto;
 }
 
 .tab {

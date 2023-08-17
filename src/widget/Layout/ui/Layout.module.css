@@ -8,7 +8,7 @@
     "sidebar app";
 }
 .collapseButton {
-  @apply block md:hidden w-6 ml-5;
+  @apply block md:hidden w-6 ml-5 shrink-0;
 }
 .sidebar {
   grid-area: sidebar;
@@ -51,6 +51,8 @@
 
 @media (max-width: 768px) {
   .wrapper {
+    width: 100vw;
+    overflow-x: hidden;
     grid-template-columns: auto;
     grid-template-areas:
       "header"
