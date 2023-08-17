@@ -3,14 +3,19 @@ import styles from "./Sidebar.module.css"
 import { FC } from "react"
 import { LogoExpanded } from "@/shared/ui/Logo/LogoExpanded"
 import { SidebarItem } from "../SidebarItem/SidebarItem"
-import { ReactComponent as HomeIcon } from "@/app/assets/icons/Home_Empty.svg"
 import { useLocation } from "react-router-dom"
 import { Logo } from "@/shared/ui"
 import { useSelector } from "react-redux"
 import { getCollapsed, layoutActions } from "../.."
 import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
-import { ArrowRightIcon, UserCircleIcon } from "@heroicons/react/20/solid"
-import { HeartIcon, QueueListIcon, SparklesIcon } from "@heroicons/react/24/outline"
+import {
+  HeartIcon,
+  HomeIcon,
+  QueueListIcon,
+  SparklesIcon,
+  ArrowRightIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/outline"
 import { getUserData } from "@/entities/User"
 
 interface SidebarProps {
