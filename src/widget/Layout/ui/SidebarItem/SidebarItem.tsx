@@ -2,6 +2,7 @@ import clsx from "clsx"
 import cls from "./SidebarItem.module.css"
 import { Link, LinkProps } from "react-router-dom"
 import { memo } from "react"
+import { Typography } from "@/shared/ui"
 
 interface SidebarItemProps extends LinkProps {
   active?: boolean
@@ -29,7 +30,11 @@ export const SidebarItem = memo(
     return (
       <Link {...rest} className={classes}>
         {icon && <span className={cls.SidebarItemIcon}>{icon}</span>}
-        {!collapsed && <span className={cls.SidebarItemText}>{children}</span>}
+        {!collapsed && (
+          <Typography variant='span' className={cls.SidebarItemText}>
+            {children}
+          </Typography>
+        )}
       </Link>
     )
   },
