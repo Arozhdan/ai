@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "@/app/providers/StoreProvider/config/StateSchema"
 import { Query, QueryRequest } from "../../types/Query"
 import { queryActions } from "../../slice/QuerySlice"
+import { userActions } from "@/entities/User"
 
 export const sendQuery = createAsyncThunk<Query, QueryRequest, ThunkConfig<string>>(
   "query/sendQuery",
@@ -23,10 +24,13 @@ export const sendQuery = createAsyncThunk<Query, QueryRequest, ThunkConfig<strin
         throw new Error()
       }
       dispatch(queryActions.unsetNewQuery())
+      dispatch(userActions.increaseCurrentUsage())
       return response.data.data
-    } catch (e) {
-      console.log(e)
-      return rejectWithValue("error")
+    } catch (e: any) {
+      console.log("e", e)
+      const message =
+        e.response?.data?.error?.details || "Упс, что-то пошло не так. Попробуйте еще раз."
+      return rejectWithValue(message)
     }
   },
 )

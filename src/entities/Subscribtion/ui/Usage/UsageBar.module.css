@@ -14,3 +14,11 @@
   @apply cursor-pointer;
   @apply hover:bg-gray-100;
 }
+
+.warning .progress {
+  @apply bg-yellow-500;
+}
+
+.danger .progress {
+  @apply bg-red-500;
+}

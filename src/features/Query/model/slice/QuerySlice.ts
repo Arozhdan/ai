@@ -66,7 +66,7 @@ export const querySlice = createSlice({
         state.isLoading = false
         state.error = action.payload || null
         state.activeItem = null
-        toast.error("Упс, что-то пошло не так")
+        toast.error(action.payload || "Упс, что-то пошло не так. Попробуйте еще раз.")
       })
       .addCase(fetchQueries.pending, (state) => {
         state.isLoadingList = true

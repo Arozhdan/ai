@@ -43,6 +43,21 @@ export const userSlice = createSlice({
       )
     },
 
+    setCurrentUsage: (state, action: PayloadAction<number>) => {
+      if (!state.authData.user) return
+      state.authData.user.currentUsage = action.payload
+    },
+
+    increaseCurrentUsage: (state, action: PayloadAction<number | undefined>) => {
+      if (!state.authData.user) return
+      state.authData.user.currentUsage += action.payload || 1
+    },
+
+    decreaseCurrentUsage: (state, action: PayloadAction<number | undefined>) => {
+      if (!state.authData.user) return
+      state.authData.user.currentUsage -= action.payload || 1
+    },
+
     initAuthData: (state) => {
       const user = localStorage.getItem(USER_LOCALSTORAGE_KEY)
       const jwt = localStorage.getItem(JWT_LOCALSTORAGE_KEY)

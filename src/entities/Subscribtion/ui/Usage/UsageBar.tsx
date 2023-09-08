@@ -12,9 +12,6 @@ interface Props {
 }
 
 export const UsageBar: FC<Props> = ({ className, link }) => {
-  const classes = clsx(styles.wrapper, className, {
-    [styles.link]: link,
-  })
   const user = useSelector(getUserData)
   if (!user) return null
 
@@ -25,6 +22,10 @@ export const UsageBar: FC<Props> = ({ className, link }) => {
   }
 
   const subscription = user.subscription
+
+  const classes = clsx(styles.wrapper, className, {
+    [styles.link]: link,
+  })
 
   if (!subscription)
     return (
@@ -45,8 +46,13 @@ export const UsageBar: FC<Props> = ({ className, link }) => {
     ? (user.currentUsage / subscription.gptUsageLimit) * 100
     : 0
 
+  const usageClasses = clsx(classes, {
+    [styles.warning]: progressWidth >= 75,
+    [styles.danger]: progressWidth >= 90,
+  })
+
   return (
-    <div className={classes} onClick={hanldeClick}>
+    <div className={usageClasses} onClick={hanldeClick}>
       <div className={styles.text}>
         <Typography variant='small'>Текущий тариф: </Typography>
         <Typography variant='h5'>{subscription.name}</Typography>
