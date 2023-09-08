@@ -1,0 +1,16 @@
+.wrapper {
+  @apply flex flex-col py-3 w-full;
+}
+.bar {
+  @apply bg-gray-200 max-w-lg;
+  @apply h-2 mt-2;
+}
+.progress {
+  @apply bg-primary;
+  @apply h-2;
+}
+
+.link {
+  @apply cursor-pointer;
+  @apply hover:bg-gray-100;
+}

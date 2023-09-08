@@ -5,7 +5,7 @@
   @apply flex items-center justify-center w-6 h-6 flex-shrink-0 text-current;
 }
 .SidebarItemIcon svg {
-  @apply w-6 h-5;
+  @apply w-5 h-5;
 }
 .SidebarItemText {
   @apply ml-2;

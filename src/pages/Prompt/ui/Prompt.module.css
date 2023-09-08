@@ -1,5 +1,5 @@
 .page {
-  @apply grid grid-cols-12  h-full bg-primary/5 relative;
+  @apply grid grid-cols-12 h-full bg-primary/5 relative;
 }
 .formWrapper {
   @apply col-span-5 bg-white flex flex-col border-r border-gray-300;

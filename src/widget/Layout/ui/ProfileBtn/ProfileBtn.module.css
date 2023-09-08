@@ -1,5 +1,5 @@
 .btn {
-  @apply relative w-56;
+  @apply relative w-56 z-50;
 }
 
 .menu {

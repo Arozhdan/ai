@@ -27,7 +27,7 @@
 }
 
 .danger {
-  @apply bg-white text-red-500 hover:bg-red-100;
+  @apply text-red-500 hover:bg-red-100;
 }
 
 .withIcon {

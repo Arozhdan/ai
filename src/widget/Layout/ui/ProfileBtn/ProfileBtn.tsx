@@ -12,6 +12,7 @@ import {
 } from "@heroicons/react/20/solid"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
+import { UsageBar } from "@/entities/Subscribtion"
 
 interface Props {
   className?: string
@@ -60,6 +61,8 @@ export const ProfileBtn: FC<Props> = ({ className }) => {
       </Button>
       {menuActive && (
         <div className={styles.menu} ref={menuRef}>
+          <UsageBar className='px-6' link='/profile' />
+
           <Button
             variant='white'
             size='small'
@@ -74,6 +77,7 @@ export const ProfileBtn: FC<Props> = ({ className }) => {
             size='small'
             className={styles.menuItem}
             iconLeft={<CreditCardIcon />}
+            onClick={() => navigate("/subscribtion")}
           >
             Подписка
           </Button>

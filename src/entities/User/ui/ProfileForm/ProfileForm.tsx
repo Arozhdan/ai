@@ -1,11 +1,17 @@
 import * as Yup from "yup"
 import { Button, Input, Typography } from "@/shared/ui"
+import clsx from "clsx"
 import styles from "./ProfileForm.module.css"
 import { useSelector } from "react-redux"
 import { getUserData } from "../.."
 import { useFormik } from "formik"
+import { FC } from "react"
 
-export const ProfileForm = () => {
+interface Props {
+  className?: string
+}
+
+export const ProfileForm: FC<Props> = ({ className }) => {
   const user = useSelector(getUserData)
   // const userImage = user?.image?.url ? __SERVER__ + user?.image?.url : null
   const formik = useFormik({
@@ -30,7 +36,7 @@ export const ProfileForm = () => {
     },
   })
   return (
-    <div className={styles.page}>
+    <div className={clsx(styles.page, className)}>
       <Typography variant='h2' className='text-primary row-start-1'>
         Профиль
       </Typography>

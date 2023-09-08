@@ -1,4 +1,5 @@
 import { Prompt } from "@/entities/Prompt"
+import { Supscription } from "@/entities/Subscribtion"
 
 export interface UserResponse {
   jwt: string
@@ -32,6 +33,10 @@ export interface User {
     updatedAt: string
   }
   favPrompts: Prompt["attributes"][]
+  subscriptionDate: string
+  currentUsage: number
+  adminSubscription: string | null
+  subscription: Supscription | null
 }
 
 export interface Formats {

@@ -5,6 +5,7 @@ import { History } from "@/pages/History"
 import { Main } from "@/pages/Main"
 import { Profile } from "@/pages/Profile"
 import { Prompt } from "@/pages/Prompt"
+import { Subscribtion } from "@/pages/Subscribtion"
 import { RouteProps } from "react-router-dom"
 
 export type AppRoutesProps = RouteProps & {
@@ -20,6 +21,7 @@ export enum AppRoutes {
   PROFILE = "profile",
   SIGNUP = "signup",
   PROMPT = "prompt/:slug",
+  SUBSCRIBTION = "subscribtion",
   // last
   NOT_FOUND = "not_found",
 }
@@ -33,6 +35,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.PROFILE]: "/profile",
   [AppRoutes.SIGNUP]: "/signup",
   [AppRoutes.PROMPT]: "/prompts/:slug",
+  [AppRoutes.SUBSCRIBTION]: "/subscribtion",
   // последний
   [AppRoutes.NOT_FOUND]: "*",
 }
@@ -77,6 +80,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     path: RoutePath["prompt/:slug"],
     authOnly: true,
     element: <Prompt />,
+  },
+  [AppRoutes.SUBSCRIBTION]: {
+    path: RoutePath.subscribtion,
+    authOnly: true,
+    element: <Subscribtion />,
   },
   // last
   [AppRoutes.NOT_FOUND]: {

@@ -1,0 +1,7 @@
+.wrapper {
+  @apply border-l border-gray-200;
+}
+
+.info {
+  @apply grid gap-1 mt-4;
+}
