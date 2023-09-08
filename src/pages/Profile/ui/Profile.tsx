@@ -1,8 +1,6 @@
-import { UsageBar } from "@/entities/Subscribtion"
 import { ProfileForm } from "@/entities/User"
 import { withLayout } from "@/widget/Layout"
 import styles from "./Profile.module.css"
-import { Typography } from "@/shared/ui"
 import { ProfileSubscribtionInfo } from "./ProfileSubscribtionInfo/ProfileSubscribtionInfo"
 
 function Profile() {
