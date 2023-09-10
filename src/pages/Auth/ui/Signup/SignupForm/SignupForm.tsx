@@ -44,7 +44,7 @@ export const SignupForm = ({ className, onSubmit }: SignupFormProps) => {
           onChange={formik.handleChange}
           value={formik.values.username}
           id='username'
-          label='Ваше имя'
+          label='Имя пользователя'
           type='text'
           onBlur={formik.handleBlur}
           error={

@@ -202,13 +202,15 @@ export const Form = ({ className }: FormProps) => {
         <div className={styles.actions}>
           <Button
             variant='ghost'
+            type='button'
             size='small'
             onClick={handleClear}
             disabled={!formik.dirty || isLoading}
+            tabIndex={2}
           >
             Очистить
           </Button>
-          <Button variant='primary' size='small' type='submit' disabled={isLoading}>
+          <Button variant='primary' size='small' type='submit' disabled={isLoading} tabIndex={1}>
             Сгенерировать
           </Button>
         </div>
