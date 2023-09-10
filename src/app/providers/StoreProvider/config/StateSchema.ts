@@ -12,6 +12,7 @@ import { LoginSchema } from "@/features/AuthByUserName"
 import { PromptSchema } from "@/entities/Prompt"
 import { LayoutSchema } from "@/widget/Layout"
 import { QuerySchema } from "@/features/Query"
+import { RegisterSchema } from "@/features/RegisterLocal"
 
 export interface StateSchema {
   user: UserSchema
@@ -19,6 +20,7 @@ export interface StateSchema {
   prompt: PromptSchema
   layout: LayoutSchema
   query: QuerySchema
+  register: RegisterSchema
 }
 export type StateSchemaKey = keyof StateSchema
 

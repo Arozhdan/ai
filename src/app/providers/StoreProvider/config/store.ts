@@ -10,6 +10,7 @@ import { loginReducer } from "@/features/AuthByUserName/model/slice/loginSlice"
 import { promptReducer } from "@/entities/Prompt"
 import { layoutReducer } from "@/widget/Layout"
 import { queryReducer } from "@/features/Query/model/slice/QuerySlice"
+import { registerReducer } from "@/features/RegisterLocal"
 
 export function createReduxStore(
   initialState?: StateSchema,
@@ -23,6 +24,7 @@ export function createReduxStore(
     prompt: promptReducer,
     layout: layoutReducer,
     query: queryReducer,
+    register: registerReducer,
   }
 
   const reducerManager = createReducerManager(rootReducers)

@@ -1,9 +1,35 @@
 import { LogoExpanded, Typography } from "@/shared/ui"
 import styles from "./Signup.module.css"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { SignupForm } from "./SignupForm/SignupForm"
+import { useCallback } from "react"
+import { regiserLocal } from "@/features/RegisterLocal/model/services/RegisterLocal/RegisterLocal"
+import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
+import { toast } from "react-toastify"
 
 const Signup = () => {
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+
+  const handleSubmit = useCallback(
+    async (values: { email: string; password: string; username: string }) => {
+      const result = await dispatch(
+        regiserLocal({
+          username: values.username,
+          password: values.password,
+          email: values.email,
+        }),
+      )
+      if (result.meta.requestStatus === "fulfilled") {
+        toast.info("Проверьте почту для подтверждения регистрации")
+        navigate("/")
+      }
+      if (result.meta.requestStatus === "rejected") {
+        console.log(result)
+      }
+    },
+    [],
+  )
   return (
     <div className={styles.Signup}>
       <div className={styles.title}>
@@ -17,7 +43,7 @@ const Signup = () => {
         зарегистрируйтесь
       </Typography>
       <div className={styles.formWrapper}>
-        <SignupForm />
+        <SignupForm onSubmit={handleSubmit} />
       </div>
     </div>
   )

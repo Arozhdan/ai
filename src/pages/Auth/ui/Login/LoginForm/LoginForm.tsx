@@ -50,12 +50,7 @@ export const LoginForm = ({ className, onSubmit }: LoginFormProps) => {
             formik.touched.password && formik.errors.password ? formik.errors.password : undefined
           }
         />
-        <Button
-          onClick={() => formik.handleSubmit()}
-          disabled={isLoading}
-          variant='primary'
-          type='submit'
-        >
+        <Button disabled={isLoading} variant='primary' type='submit'>
           Войти
         </Button>
       </form>

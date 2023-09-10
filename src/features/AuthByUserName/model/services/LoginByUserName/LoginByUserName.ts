@@ -41,9 +41,10 @@ export const loginByUsername = createAsyncThunk<
     $api.defaults.headers.common["Authorization"] = `Bearer ${response.data.jwt}`
 
     return response.data
-  } catch (e) {
-    toast.error("Error logging in")
+  } catch (e: any) {
+    const errorMessages = e.response?.data?.error?.details || "Ошибка авторизации. Попробуйте еще раз."
+    toast.error(errorMessages)
     console.log(e)
-    return rejectWithValue("error")
+    return rejectWithValue(errorMessages)
   }
 })

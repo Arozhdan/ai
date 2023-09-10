@@ -16,7 +16,7 @@ export const fetchPromptsList = createAsyncThunk<
   const { extra, dispatch, rejectWithValue } = thunkApi
 
   try {
-    const response = await extra.api.get<PromptsResponse>("/prompts")
+    const response = await extra.api.get<PromptsResponse>("/prompts?pagination[pageSize]=100")
 
     if (!response.data) {
       throw new Error()
