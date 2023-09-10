@@ -57,7 +57,7 @@ export const UsageBar: FC<Props> = ({ className, link }) => {
         <Typography variant='small'>Текущий тариф: </Typography>
         <Typography variant='h5'>{subscription.name}</Typography>
         <Typography variant='small'>
-          {user.currentUsage} / {subscription.gptUsageLimit} результатов
+          {user.currentUsage || 0} / {subscription.gptUsageLimit} результатов
         </Typography>
       </div>
 
