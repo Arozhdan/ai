@@ -49,7 +49,7 @@ export const ProfileSubscribtionInfo: FC<Props> = ({ className }) => {
           className='text-primary mt-2'
           style={{ cursor: "pointer" }}
         >
-          <Link to='/subscribtion'>Подробнее</Link>
+          <Link to='/subscription'>Подробнее</Link>
         </Typography>
       </div>
     </div>

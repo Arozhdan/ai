@@ -1,4 +1,5 @@
 import { ThunkConfig } from "@/app/providers/StoreProvider/config/StateSchema"
+import { subscriptionActions } from "@/entities/Subscribtion"
 import { User, userActions } from "@/entities/User"
 import { USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage"
 import { createAsyncThunk } from "@reduxjs/toolkit"
@@ -18,8 +19,11 @@ export const getMe = createAsyncThunk<User, undefined, ThunkConfig<string>>(
       }
       localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data))
       dispatch(userActions.setUserData(response.data))
-
       dispatch(userActions.setIsUserDataLoading(false))
+      const { subscription } = response.data
+      if (subscription) {
+        dispatch(subscriptionActions.setUserSubscription(subscription))
+      }
 
       return response.data
     } catch (e) {

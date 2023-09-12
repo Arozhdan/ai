@@ -6,7 +6,7 @@ export default {
   ],
   theme: {
     extend: {
-      colors:{
+      colors: {
         "primary": "#1723C7",
         "background": {
           DEFAULT: "#F8F8F8",
@@ -15,5 +15,8 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/typography"),
+
+  ],
 }

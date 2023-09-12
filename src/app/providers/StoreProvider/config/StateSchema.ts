@@ -13,6 +13,7 @@ import { PromptSchema } from "@/entities/Prompt"
 import { LayoutSchema } from "@/widget/Layout"
 import { QuerySchema } from "@/features/Query"
 import { RegisterSchema } from "@/features/RegisterLocal"
+import { SubscriptionSchema } from "@/entities/Subscribtion"
 
 export interface StateSchema {
   user: UserSchema
@@ -21,6 +22,7 @@ export interface StateSchema {
   layout: LayoutSchema
   query: QuerySchema
   register: RegisterSchema
+  subscription: SubscriptionSchema
 }
 export type StateSchemaKey = keyof StateSchema
 

@@ -1,0 +1,11 @@
+.links {
+  @apply grid grid-cols-3 gap-6 mt-6;
+}
+
+.link {
+  @apply flex flex-col;
+}
+
+.linkFooter {
+  @apply mt-auto;
+}

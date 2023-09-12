@@ -22,7 +22,7 @@ export enum AppRoutes {
   PROFILE = "profile",
   SIGNUP = "signup",
   PROMPT = "prompt/:slug",
-  SUBSCRIBTION = "subscribtion",
+  SUBSCRIPTION = "subscription",
   // last
   NOT_FOUND = "not_found",
 }
@@ -37,7 +37,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.PROFILE]: "/profile",
   [AppRoutes.SIGNUP]: "/signup",
   [AppRoutes.PROMPT]: "/prompts/:slug",
-  [AppRoutes.SUBSCRIBTION]: "/subscribtion",
+  [AppRoutes.SUBSCRIPTION]: "/subscription",
   // последний
   [AppRoutes.NOT_FOUND]: "*",
 }
@@ -88,8 +88,8 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     authOnly: true,
     element: <Prompt />,
   },
-  [AppRoutes.SUBSCRIBTION]: {
-    path: RoutePath.subscribtion,
+  [AppRoutes.SUBSCRIPTION]: {
+    path: RoutePath.subscription,
     authOnly: true,
     element: <Subscribtion />,
   },

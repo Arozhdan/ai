@@ -3,7 +3,7 @@ export enum SubscriptionStatus {
   SUSPENDED = "suspended",
 }
 
-export interface Supscription {
+export interface Subscription {
   id: number
   name: string
   cost: number

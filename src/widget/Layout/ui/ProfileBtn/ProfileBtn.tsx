@@ -21,6 +21,7 @@ interface Props {
 export const ProfileBtn: FC<Props> = ({ className }) => {
   const dispatch = useAppDispatch()
   const user = useSelector(getUserData)
+  const subscription = user?.subscription
   const classes = clsx(styles.btn, className)
   const [menuActive, setMenuActive] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
@@ -61,7 +62,10 @@ export const ProfileBtn: FC<Props> = ({ className }) => {
       </Button>
       {menuActive && (
         <div className={styles.menu} ref={menuRef}>
-          <UsageBar className='px-6' link='/profile' />
+          <UsageBar
+            className='px-6'
+            link={subscription?.cost && subscription?.cost > 0 ? "/profile" : "/subscription"}
+          />
 
           <Button
             variant='white'
@@ -72,15 +76,17 @@ export const ProfileBtn: FC<Props> = ({ className }) => {
           >
             Профиль
           </Button>
-          <Button
-            variant='white'
-            size='small'
-            className={styles.menuItem}
-            iconLeft={<CreditCardIcon />}
-            onClick={() => navigate("/subscribtion")}
-          >
-            Подписка
-          </Button>
+          {subscription && subscription.cost > 0 && (
+            <Button
+              variant='white'
+              size='small'
+              className={styles.menuItem}
+              iconLeft={<CreditCardIcon />}
+              onClick={() => navigate("/subscribtion")}
+            >
+              Подписка
+            </Button>
+          )}
           <Button
             variant='danger'
             size='small'

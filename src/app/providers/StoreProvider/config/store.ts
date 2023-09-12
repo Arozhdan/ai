@@ -11,6 +11,7 @@ import { promptReducer } from "@/entities/Prompt"
 import { layoutReducer } from "@/widget/Layout"
 import { queryReducer } from "@/features/Query/model/slice/QuerySlice"
 import { registerReducer } from "@/features/RegisterLocal"
+import { subscriptionReducer } from "@/entities/Subscribtion"
 
 export function createReduxStore(
   initialState?: StateSchema,
@@ -25,6 +26,7 @@ export function createReduxStore(
     layout: layoutReducer,
     query: queryReducer,
     register: registerReducer,
+    subscription: subscriptionReducer,
   }
 
   const reducerManager = createReducerManager(rootReducers)
