@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "@/app/providers/StoreProvider/config/StateSchema"
-import { Chat } from "../../types/Chat"
 import { chatActions } from "../../slice/ChatSlice"
 
 interface CreateNewChatProps {
