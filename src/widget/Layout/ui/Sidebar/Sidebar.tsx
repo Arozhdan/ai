@@ -3,7 +3,7 @@ import styles from "./Sidebar.module.css"
 import { FC } from "react"
 import { LogoExpanded } from "@/shared/ui/Logo/LogoExpanded"
 import { SidebarItem } from "../SidebarItem/SidebarItem"
-import { useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { Logo } from "@/shared/ui"
 import { useSelector } from "react-redux"
 import { getCollapsed, layoutActions } from "../.."
@@ -15,6 +15,7 @@ import {
   SparklesIcon,
   ArrowRightIcon,
   UserCircleIcon,
+  ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/outline"
 import { getUserData } from "@/entities/User"
 
@@ -40,9 +41,9 @@ export const Sidebar: FC<SidebarProps> = ({ onCollapse }) => {
         [styles.sidebarCollapsed]: collapsed,
       })}
     >
-      <div className={styles.sidebarHeader} onClick={handleClick}>
+      <Link to='/' className={styles.sidebarHeader}>
         {collapsed ? <Logo /> : <LogoExpanded />}
-      </div>
+      </Link>
       <div className={styles.sidebarContent}>
         <div className={styles.sidebarContentTop}>
           <SidebarItem collapsed={collapsed} active={path === "/"} to={"/"} icon={<HomeIcon />}>
@@ -63,6 +64,9 @@ export const Sidebar: FC<SidebarProps> = ({ onCollapse }) => {
             icon={<QueueListIcon />}
           >
             История
+          </SidebarItem>
+          <SidebarItem collapsed={collapsed} to={"/chat"} icon={<ChatBubbleBottomCenterTextIcon />}>
+            ChatGTP
           </SidebarItem>
         </div>
         <div className={styles.sidebarContentMiddle}>

@@ -12,6 +12,7 @@ import { layoutReducer } from "@/widget/Layout"
 import { queryReducer } from "@/features/Query/model/slice/QuerySlice"
 import { registerReducer } from "@/features/RegisterLocal"
 import { subscriptionReducer } from "@/entities/Subscribtion"
+import { chatReducer } from "@/entities/Chat"
 
 export function createReduxStore(
   initialState?: StateSchema,
@@ -27,6 +28,7 @@ export function createReduxStore(
     query: queryReducer,
     register: registerReducer,
     subscription: subscriptionReducer,
+    chat: chatReducer,
   }
 
   const reducerManager = createReducerManager(rootReducers)

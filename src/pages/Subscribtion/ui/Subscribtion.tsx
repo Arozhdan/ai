@@ -24,7 +24,7 @@ const Subscribtion = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchSubscriptionLinks())
+    if (subscription.status !== "active") dispatch(fetchSubscriptionLinks())
   }, [])
 
   return (
@@ -41,11 +41,11 @@ const Subscribtion = () => {
               <Typography variant='h5'>
                 Дата подписки:
                 <Typography variant='small' className='pl-2'>
-                  {useDateFormatter(subscription.createdAt, null, "dd.MM.yyyy")}
+                  {useDateFormatter(subscription.dateFirstPayment, null, "dd.MM.yyyy")}
                 </Typography>
               </Typography>
               <Typography variant='h5'>
-                Дата окончания:
+                Последнее списание:
                 <Typography variant='small' className='pl-2'>
                   {useDateFormatter(subscription.dateLastPayment, null, "dd.MM.yyyy")}
                 </Typography>
@@ -77,7 +77,7 @@ const Subscribtion = () => {
                   {useDateFormatter(subscription.dateNextPayment, null, "dd.MM.yyyy")}
                 </Typography>
               </Typography>
-              {!subscription.cost && (
+              {subscription.active === "1" && (
                 <Button
                   className='mt-10'
                   variant='primary'
@@ -92,7 +92,7 @@ const Subscribtion = () => {
           </div>
         </div>
         <div className={styles.actions}>
-          {!subscription.cost ? (
+          {subscription.status !== "active" ? (
             <>
               <Typography variant='h3' className='text-primary pl-5'>
                 Дополнительные действия

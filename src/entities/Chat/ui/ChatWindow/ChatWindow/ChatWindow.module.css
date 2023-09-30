@@ -1,0 +1,27 @@
+.wrapper {
+  @apply w-full h-full flex flex-col items-center overflow-y-hidden pb-32 relative;
+}
+
+.container {
+  @apply w-full h-full flex flex-col overflow-y-auto;
+}
+
+.container::-webkit-scrollbar {
+  @apply w-2 h-full;
+}
+.container::-webkit-scrollbar-thumb {
+  @apply transition-all duration-300 bg-primary/20 hover:bg-primary/10;
+}
+
+.messages {
+  @apply w-full max-w-3xl mx-auto;
+}
+
+.inputContainer {
+  @apply w-full h-32 max-w-3xl mx-auto py-5;
+}
+
+.input {
+  @apply absolute h-32 bottom-0 w-full border-t border-gray-200;
+  box-shadow: 0 -5px 14px rgba(0, 0, 0, 0.1);
+}

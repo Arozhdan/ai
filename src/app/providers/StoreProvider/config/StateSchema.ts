@@ -14,6 +14,7 @@ import { LayoutSchema } from "@/widget/Layout"
 import { QuerySchema } from "@/features/Query"
 import { RegisterSchema } from "@/features/RegisterLocal"
 import { SubscriptionSchema } from "@/entities/Subscribtion"
+import { ChatSchema } from "@/entities/Chat"
 
 export interface StateSchema {
   user: UserSchema
@@ -23,6 +24,7 @@ export interface StateSchema {
   query: QuerySchema
   register: RegisterSchema
   subscription: SubscriptionSchema
+  chat: ChatSchema
 }
 export type StateSchemaKey = keyof StateSchema
 

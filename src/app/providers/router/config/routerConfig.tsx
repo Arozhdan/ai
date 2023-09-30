@@ -1,5 +1,6 @@
 import { About } from "@/pages/About"
 import { Login, Signup, Success } from "@/pages/Auth"
+import { Chat } from "@/pages/Chat"
 import { Favorites } from "@/pages/Favorites"
 import { History } from "@/pages/History"
 import { Main } from "@/pages/Main"
@@ -22,6 +23,7 @@ export enum AppRoutes {
   PROFILE = "profile",
   SIGNUP = "signup",
   PROMPT = "prompt/:slug",
+  CHAT = "chat",
   SUBSCRIPTION = "subscription",
   // last
   NOT_FOUND = "not_found",
@@ -37,6 +39,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.PROFILE]: "/profile",
   [AppRoutes.SIGNUP]: "/signup",
   [AppRoutes.PROMPT]: "/prompts/:slug",
+  [AppRoutes.CHAT]: "/chat",
   [AppRoutes.SUBSCRIPTION]: "/subscription",
   // последний
   [AppRoutes.NOT_FOUND]: "*",
@@ -87,6 +90,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     path: RoutePath["prompt/:slug"],
     authOnly: true,
     element: <Prompt />,
+  },
+  [AppRoutes.CHAT]: {
+    path: RoutePath.chat,
+    authOnly: true,
+    element: <Chat />,
   },
   [AppRoutes.SUBSCRIPTION]: {
     path: RoutePath.subscription,

@@ -1,0 +1,15 @@
+.root {
+  @apply w-full h-full pr-10 relative;
+}
+
+.input {
+  @apply w-full h-full resize-none p-2 border-primary/50 border shadow-lg shadow-primary/10 outline-primary;
+}
+
+.actions {
+  @apply absolute top-0 right-0 flex flex-col items-center justify-center h-full;
+}
+
+.btn {
+  @apply w-8 h-8 flex items-center justify-center text-primary;
+}

@@ -1,0 +1,30 @@
+.wrapper {
+  @apply grid grid-cols-12 items-center py-2 pr-1 pl-4 relative
+  hover:cursor-pointer hover:bg-indigo-50 transition-all duration-300;
+}
+
+.icon {
+  @apply col-span-1;
+}
+
+.content {
+  @apply col-span-11 pl-2 whitespace-nowrap overflow-hidden relative z-0;
+}
+
+.wrapper::before {
+  @apply z-10 absolute top-0 right-0 w-12 h-full
+   bg-gradient-to-r from-transparent via-white/80 to-white;
+  content: "";
+}
+
+.actions {
+  @apply col-span-2 flex justify-end;
+}
+
+.btn {
+  @apply w-full;
+}
+
+.active {
+  @apply bg-primary text-white hover:text-primary;
+}

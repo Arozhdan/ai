@@ -1,0 +1,27 @@
+.page {
+  @apply flex flex-col h-screen;
+}
+
+.container {
+  @apply h-full;
+  display: grid;
+  grid-template-areas:
+    "aside header"
+    "aside main";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 320px 1fr;
+}
+
+.header {
+  @apply flex items-center justify-end  py-6 px-6 lg:px-12 border-b border-gray-200;
+  grid-area: header;
+}
+.aside {
+  @apply border-r border-gray-200 overflow-hidden;
+  grid-area: aside;
+}
+
+.main {
+  @apply overflow-hidden;
+  grid-area: main;
+}

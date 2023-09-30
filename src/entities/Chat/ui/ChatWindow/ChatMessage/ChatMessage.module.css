@@ -1,0 +1,28 @@
+.root {
+  @apply flex py-4;
+}
+
+.icon {
+  @apply flex justify-center items-center w-10 h-10 mr-5 border shrink-0;
+}
+.icon svg {
+  @apply w-6 h-6;
+}
+.line {
+  @apply py-1;
+}
+.message {
+  @apply pt-0.5 prose;
+}
+
+.user {
+  @apply text-gray-700;
+}
+
+.assistant {
+  @apply text-primary;
+}
+
+.assistant .icon {
+  @apply border-indigo-400;
+}

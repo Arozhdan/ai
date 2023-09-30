@@ -1,0 +1,33 @@
+.root {
+  @apply relative bg-white;
+}
+
+.root::after {
+  @apply absolute block bottom-12 h-10 left-0 right-0 z-10 pointer-events-none;
+  @apply bg-gradient-to-b from-transparent via-primary/5 to-primary/20;
+  content: "";
+}
+
+.wrapper {
+  @apply h-screen overflow-x-hidden flex flex-col grid-cols-1 relative pb-12;
+}
+
+.logo {
+  @apply flex justify-center items-center py-7;
+}
+.logo svg {
+  @apply h-8;
+}
+
+.list {
+  @apply overflow-y-scroll h-full;
+}
+.list::-webkit-scrollbar {
+  @apply w-2;
+}
+.list::-webkit-scrollbar-thumb {
+  @apply transition-all duration-300 bg-primary/20 hover:bg-primary/10;
+}
+.back {
+  @apply absolute bottom-0 left-0 ring-0 w-full z-10;
+}

@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import { memo, useEffect } from "react"
 import styles from "./Layout.module.css"
 import { Sidebar } from "./Sidebar/Sidebar"
