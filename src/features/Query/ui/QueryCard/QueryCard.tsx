@@ -21,6 +21,8 @@ interface Props {
 }
 
 export const QueryCard = ({ query, className, active }: Props) => {
+  if (!query.prompt) return null
+
   const dispatch = useAppDispatch()
   const [menuActive, setMenuActive] = useState(false)
   const [showMore, setShowMore] = useState(false)
