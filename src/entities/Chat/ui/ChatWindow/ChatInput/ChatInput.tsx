@@ -8,6 +8,7 @@ interface Props {
 export const ChatInput = ({ onSubmit }: Props) => {
   const [message, setMessage] = useState("")
   const handleClick = () => {
+    if (!message) return
     onSubmit(message)
     setMessage("")
   }

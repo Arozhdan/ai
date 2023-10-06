@@ -11,7 +11,6 @@ export interface Query {
   user: User
   prompt: Prompt["attributes"]
   input: string
-  tov: string
   lang: string
 }
 
@@ -19,10 +18,6 @@ export interface QueryRequest {
   relatedPrompt: number
   query: string
   input: string
-  tov: {
-    label: string
-    value: string
-  }
   lang: {
     label: string
     value: string

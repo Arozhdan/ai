@@ -13,7 +13,7 @@
 
 .wrapper::before {
   @apply z-10 absolute top-0 right-0 w-24 h-full
-   bg-gradient-to-r from-white/5 via-white/60 to-white;
+   bg-gradient-to-r from-transparent  to-white;
   content: "";
 }
 

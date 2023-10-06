@@ -20,7 +20,7 @@
 }
 
 .list {
-  @apply overflow-y-scroll h-full;
+  @apply overflow-y-auto h-full;
 }
 .list::-webkit-scrollbar {
   @apply w-2;

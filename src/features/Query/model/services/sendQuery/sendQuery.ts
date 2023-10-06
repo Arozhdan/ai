@@ -16,7 +16,6 @@ export const sendQuery = createAsyncThunk<Query, QueryRequest, ThunkConfig<strin
         query: query.query,
         relatedPrompt: query.relatedPrompt,
         title: query.title,
-        tov: query.tov,
         lang: query.lang,
       })
 
