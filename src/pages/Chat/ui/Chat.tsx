@@ -1,6 +1,6 @@
 import styles from "./Chat.module.css"
 import { ProfileBtn } from "@/widget/Layout/ui/ProfileBtn/ProfileBtn"
-import { ChatList, ChatWindow, createNewChat, fetchChatList, getChatList } from "@/entities/Chat"
+import { ChatList, ChatWindow, fetchChatList, getChatList } from "@/entities/Chat"
 import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
