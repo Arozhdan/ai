@@ -2,13 +2,16 @@ import { useSelector } from "react-redux"
 import { ChatInput } from "../ChatInput/ChatInput"
 import { ChatMessage } from "../ChatMessage/ChatMessage"
 import styles from "./ChatWindow.module.css"
-import { getActiveChat, newMessage } from "@/entities/Chat"
+import { getActiveChat, getIsTyping, newMessage } from "@/entities/Chat"
 import { useAppDispatch } from "@/shared/lib/useAppDispatch/useAppDispatch"
 import { useEffect, useRef } from "react"
+import { Typography } from "@/shared/ui"
 export const ChatWindow = () => {
   const chat = useSelector(getActiveChat)
   const dispatch = useAppDispatch()
   const ref = useRef<HTMLDivElement>(null)
+
+  const isTyping = useSelector(getIsTyping)
 
   useEffect(() => {
     scrollDown()
@@ -20,7 +23,7 @@ export const ChatWindow = () => {
       ref.current?.scrollTo({
         top: ref.current?.scrollHeight,
       })
-    }, 100)
+    }, 10)
   }
 
   const handleSubmit = (message: string) => {
@@ -35,11 +38,18 @@ export const ChatWindow = () => {
           {chat?.messages?.map((message, i) => (
             <ChatMessage key={i} message={message.content} role={message.role} />
           ))}
+          {isTyping && <ChatMessage isLoader message={"Печатает..."} role={"assistant"} />}
         </div>
       </div>
       <div className={styles.input}>
         <div className={styles.inputContainer}>
-          <ChatInput onSubmit={handleSubmit} />
+          {chat ? (
+            <ChatInput onSubmit={handleSubmit} />
+          ) : (
+            <Typography variant='small' as='p' className='text-center'>
+              Выберите чат
+            </Typography>
+          )}
         </div>
       </div>
     </div>

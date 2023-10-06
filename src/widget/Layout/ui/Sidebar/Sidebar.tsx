@@ -66,7 +66,7 @@ export const Sidebar: FC<SidebarProps> = ({ onCollapse }) => {
             История
           </SidebarItem>
           <SidebarItem collapsed={collapsed} to={"/chat"} icon={<ChatBubbleBottomCenterTextIcon />}>
-            ChatGTP
+            ChatPRO
           </SidebarItem>
         </div>
         <div className={styles.sidebarContentMiddle}>

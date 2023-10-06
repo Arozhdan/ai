@@ -3,8 +3,9 @@ import { ChatSchema } from "../types/ChatSchema"
 import { Chat } from "../types/Chat"
 import { ACTIVE_CHAT_LOCALSTORAGE_KEY } from "@/shared/const/localstorage"
 import { createNewChat } from "../services/createNewChat/createNewChat"
-import { newMessage } from "../.."
+import { newMessage, renameChat } from "../.."
 import { toast } from "react-toastify"
+import { deleteChat } from "../services/deleteChat/deleteChat"
 
 const initialState: ChatSchema = {
   chatList: [],
@@ -12,7 +13,7 @@ const initialState: ChatSchema = {
   chatListError: null,
   selectedChat: null,
   selectedChatIsLoading: false,
-  selectedChatError: null
+  selectedChatError: null,
 }
 
 export const chatSlice = createSlice({
@@ -26,6 +27,20 @@ export const chatSlice = createSlice({
       state.chatList.unshift(action.payload)
       localStorage.setItem(ACTIVE_CHAT_LOCALSTORAGE_KEY, JSON.stringify(action.payload.id))
     },
+    renameChat: (state, action: PayloadAction<{ id: number; name: string }>) => {
+      const chatIndex = state.chatList.findIndex((chat) => chat.id === action.payload.id)
+      if (chatIndex === -1) return
+      state.chatList[chatIndex].name = action.payload.name
+    },
+    deleteChat: (state, action: PayloadAction<number>) => {
+      state.chatList = state.chatList.filter((chat) => chat.id !== action.payload)
+      localStorage.removeItem(ACTIVE_CHAT_LOCALSTORAGE_KEY)
+    },
+    setFirstChatAsActive: (state) => {
+      if (!state.chatList.length) return
+      state.selectedChat = state.chatList[0]
+      localStorage.setItem(ACTIVE_CHAT_LOCALSTORAGE_KEY, JSON.stringify(state.chatList[0].id))
+    },
     setChatListIsLoading: (state, action: PayloadAction<boolean>) => {
       state.chatListIsLoading = action.payload
     },
@@ -33,7 +48,7 @@ export const chatSlice = createSlice({
       state.chatListError = action.payload
     },
     setSelectedChat: (state, action: PayloadAction<{ id: number } | null>) => {
-      state.selectedChat = state.chatList.find(chat => chat.id === action.payload?.id) || null
+      state.selectedChat = state.chatList.find((chat) => chat.id === action.payload?.id) || null
       if (!action.payload?.id) return localStorage.removeItem(ACTIVE_CHAT_LOCALSTORAGE_KEY)
       localStorage.setItem(ACTIVE_CHAT_LOCALSTORAGE_KEY, JSON.stringify(action.payload.id))
     },
@@ -43,18 +58,21 @@ export const chatSlice = createSlice({
     setSelectedChatError: (state, action: PayloadAction<string | null>) => {
       state.selectedChatError = action.payload
     },
-    addMessage: (state, action: PayloadAction<{
-      chatId: number
-      message: string
-      role: "user" | "assistant"
-    }>) => {
-      const chatIndex = state.chatList.findIndex(chat => chat.id === action.payload.chatId)
+    addMessage: (
+      state,
+      action: PayloadAction<{
+        chatId: number
+        message: string
+        role: "user" | "assistant"
+      }>,
+    ) => {
+      const chatIndex = state.chatList.findIndex((chat) => chat.id === action.payload.chatId)
       if (chatIndex === -1) return
       state.chatList[chatIndex].messages.push({
         role: action.payload.role,
         content: action.payload.message,
       })
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -63,7 +81,7 @@ export const chatSlice = createSlice({
         state.selectedChatIsLoading = true
       })
       .addCase(createNewChat.fulfilled, (state, action) => {
-        console.log(action.payload);
+        console.log(action.payload)
 
         state.selectedChatIsLoading = false
         state.selectedChat = action.payload
@@ -81,6 +99,10 @@ export const chatSlice = createSlice({
       })
       .addCase(newMessage.rejected, (state, action) => {
         state.selectedChatIsLoading = false
+        state.selectedChatError = action.payload as string
+        toast.error(action.payload)
+      })
+      .addCase(renameChat.rejected, (state, action) => {
         state.selectedChatError = action.payload as string
         toast.error(action.payload)
       })

@@ -26,3 +26,7 @@
 .assistant .icon {
   @apply border-indigo-400;
 }
+
+.loader .message {
+  @apply animate-pulse prose-sm text-gray-400;
+}

@@ -7,13 +7,15 @@ interface Props {
   className?: string
   message: string
   role: "user" | "assistant"
+  isLoader?: boolean
 }
 
-export const ChatMessage: FC<Props> = ({ className, message, role }) => {
+export const ChatMessage: FC<Props> = ({ className, message, role, isLoader }) => {
   const icon = role === "user" ? <UserIcon /> : <CpuChipIcon />
   const classes = clsx(styles.root, className, {
     [styles.user]: role === "user",
     [styles.assistant]: role === "assistant",
+    [styles.loader]: isLoader,
   })
 
   const renderMessage = message?.split("\n").map((line, i) => (

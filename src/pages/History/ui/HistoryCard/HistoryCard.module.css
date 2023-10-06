@@ -6,6 +6,10 @@
   @apply mt-10;
 }
 
+.input {
+  @apply line-clamp-3 pr-10;
+}
+
 .actions {
   @apply flex justify-end mt-6;
   @apply hover:text-primary;

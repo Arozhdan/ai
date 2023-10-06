@@ -20,6 +20,7 @@ interface Props {
 }
 
 export const HistoryCard: FC<Props> = ({ className, query }) => {
+  if (!query.prompt) return null
   const [showMore, setShowMore] = useState(false)
   const [menuActive, setMenuActive] = useState(false)
   const dispatch = useAppDispatch()
@@ -63,9 +64,11 @@ export const HistoryCard: FC<Props> = ({ className, query }) => {
 
   return (
     <div className={classes}>
-      <Typography variant='h4'>{capitalizeFirstLetter(query.input)}</Typography>
+      <Typography className={styles.input} variant='h4'>
+        {capitalizeFirstLetter(query.input)}
+      </Typography>
       <Typography variant='h5'>
-        <Link to={`/prompts/${query.prompt.slug}`}>{query.title}</Link>
+        <Link to={`/prompts/${query.prompt?.slug}`}>{query.title}</Link>
       </Typography>
       <div className={styles.result}>{getMessage(query.result)}</div>
       <div className={styles.actions}>
