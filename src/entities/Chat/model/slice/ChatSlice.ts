@@ -5,7 +5,6 @@ import { ACTIVE_CHAT_LOCALSTORAGE_KEY } from "@/shared/const/localstorage"
 import { createNewChat } from "../services/createNewChat/createNewChat"
 import { newMessage, renameChat } from "../.."
 import { toast } from "react-toastify"
-import { deleteChat } from "../services/deleteChat/deleteChat"
 
 const initialState: ChatSchema = {
   chatList: [],
