@@ -13,3 +13,10 @@
 .btn {
   @apply w-8 h-8 flex items-center justify-center text-primary;
 }
+.btn svg {
+  @apply w-6 h-6 transition duration-200;
+}
+
+.btn:hover svg {
+  @apply scale-110;
+}
