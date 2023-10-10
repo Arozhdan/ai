@@ -24,7 +24,7 @@ const Subscribtion = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (subscription.status !== "active") dispatch(fetchSubscriptionLinks())
+    if (subscription.cost <= 0) dispatch(fetchSubscriptionLinks())
   }, [])
 
   return (
