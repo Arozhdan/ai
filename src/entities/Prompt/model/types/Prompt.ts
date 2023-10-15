@@ -2,6 +2,15 @@ export interface PromptsResponse {
   data: Prompt[]
 }
 
+export const enum PromtIcons {
+  PENCIL = "pencil",
+  BOOK = "book",
+  ENVELOPE = "envelope",
+  USERS = "users",
+  STORE = "store",
+  DOCUMENT = "document",
+}
+
 export interface Prompt {
   id: 1
   attributes: {
@@ -14,5 +23,7 @@ export interface Prompt {
     description: string
     slug: string
     id?: number
+    example?: string
+    icon?: PromtIcons
   }
 }

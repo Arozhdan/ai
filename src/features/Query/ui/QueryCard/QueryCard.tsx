@@ -92,7 +92,7 @@ export const QueryCard = ({ query, className, active }: Props) => {
             })}
             onClick={() => setShowMore((prev) => !prev)}
           >
-            Show {showMore ? "Less" : "More"}
+            {showMore ? "Скрыть" : "Показать полностью"}
           </button>
         )}
       </div>

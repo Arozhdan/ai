@@ -43,6 +43,12 @@ export const Form = ({ className }: FormProps) => {
     formik.resetForm()
   }, [pathname])
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && e.ctrlKey) {
+      formik.handleSubmit()
+    }
+  }
+
   const formik = useFormik({
     initialValues: {
       lang: newQuery?.lang || langOptions[0],
@@ -87,8 +93,9 @@ export const Form = ({ className }: FormProps) => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={(formik.touched.input && formik.errors.input) || ""}
-            placeholder={prompt?.attributes.helpText}
+            placeholder={prompt?.attributes.example || "Контекст"}
             className={styles.input}
+            onKeyDown={handleKeyDown}
             label={prompt?.attributes.helpText}
           />
           <Select

@@ -1,5 +1,5 @@
 import { About } from "@/pages/About"
-import { Login, Signup, Success } from "@/pages/Auth"
+import { ForgotPassword, Login, Signup, Success } from "@/pages/Auth"
 import { Chat } from "@/pages/Chat"
 import { Favorites } from "@/pages/Favorites"
 import { History } from "@/pages/History"
@@ -20,6 +20,7 @@ export enum AppRoutes {
   FAVORITES = "favorites",
   LOGIN = "login",
   SUCCESS = "success",
+  FORGOT_PASSWORD = "forgot_password",
   PROFILE = "profile",
   SIGNUP = "signup",
   PROMPT = "prompt/:slug",
@@ -35,6 +36,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.HISTORY]: "/history",
   [AppRoutes.FAVORITES]: "/favorites",
   [AppRoutes.LOGIN]: "/login",
+  [AppRoutes.FORGOT_PASSWORD]: "/forgot-password",
   [AppRoutes.SUCCESS]: "/success",
   [AppRoutes.PROFILE]: "/profile",
   [AppRoutes.SIGNUP]: "/signup",
@@ -70,6 +72,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     path: RoutePath.login,
     authOnly: false,
     element: <Login />,
+  },
+  [AppRoutes.FORGOT_PASSWORD]: {
+    path: RoutePath.forgot_password,
+    authOnly: false,
+    element: <ForgotPassword />,
   },
   [AppRoutes.SUCCESS]: {
     path: RoutePath.success,

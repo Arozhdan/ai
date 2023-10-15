@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { LoginSchema } from "../types/loginSchema"
 import { loginByUsername } from "../services/LoginByUserName/LoginByUserName"
+import { resetPassword } from "../services/ResetPassword/ResetPassword"
 
 const initialState: LoginSchema = {
   isLoading: false,
@@ -31,6 +32,16 @@ export const loginSlice = createSlice({
       .addCase(loginByUsername.rejected, (state, action) => {
         state.isLoading = false
         state.error = action.payload
+      })
+      .addCase(resetPassword.pending, (state) => {
+        state.error = undefined
+        state.isLoading = true
+      })
+      .addCase(resetPassword.fulfilled, (state) => {
+        state.isLoading = false
+      })
+      .addCase(resetPassword.rejected, (state) => {
+        state.isLoading = false
       })
   },
 })

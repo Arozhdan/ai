@@ -75,7 +75,7 @@ export const SignupForm = ({ className, onSubmit }: SignupFormProps) => {
           onChange={formik.handleChange}
           value={formik.values.repeatPassword}
           id='repeatPassword'
-          label='Пароль'
+          label='Повторите пароль'
           type='password'
           onBlur={formik.handleBlur}
           error={

@@ -6,12 +6,12 @@ export const RequestLoader = () => {
   const [messageIndex, setMessageIndex] = useState(0)
   const loadingMessages = useMemo(
     () => [
-      "Loading...",
-      "Be patient...",
-      "Almost there...",
-      "Generating response...",
-      "AI is working...",
-      "AI is thinking...",
+      "Загружаем...",
+      "Подождите...",
+      "Генерируем ответ...",
+      "Почти готово...",
+      "AI думает...",
+      "Секундочку...",
     ],
     [],
   )

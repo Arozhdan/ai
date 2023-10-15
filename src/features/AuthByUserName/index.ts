@@ -3,3 +3,5 @@ export { getLoginUsername } from "./model/selectors/getLoginUsername/getLoginUse
 export { getLoginPassword } from "./model/selectors/getLoginPassword/getLoginPassword"
 export { getLoginError } from "./model/selectors/getLoginError/getLoginError"
 export { getLoginIsLoading } from "./model/selectors/getLoginLoading/getLoginLoading"
+export { forgotPasswordRequest } from "./model/services/ForgotPasswordRequestReset/ForgotPasswordRequestReset"
+export { resetPassword } from "./model/services/ResetPassword/ResetPassword"

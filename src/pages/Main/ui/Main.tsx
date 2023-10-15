@@ -49,6 +49,7 @@ const Main = () => {
             description={prompt.attributes.description}
             help={prompt.attributes.helpText}
             slug={prompt.attributes.slug}
+            icon={prompt.attributes.icon}
           />
         ))}
       </div>
