@@ -1,4 +1,4 @@
-import { LogoExpanded, Typography } from "@/shared/ui"
+import { Typography } from "@/shared/ui"
 import styles from "./ForgotPassword.module.css"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { ForgotPasswordForm } from "./ForgotPasswordForm/ForgotPasswordForm"

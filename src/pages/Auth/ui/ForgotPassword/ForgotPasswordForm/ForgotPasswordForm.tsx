@@ -3,7 +3,7 @@ import styles from "./ForgotPasswordForm.module.css"
 import { Button, Input } from "@/shared/ui"
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import { getLoginIsLoading, getLoginPassword, getLoginUsername } from "@/features/AuthByUserName"
+import { getLoginIsLoading, getLoginUsername } from "@/features/AuthByUserName"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
