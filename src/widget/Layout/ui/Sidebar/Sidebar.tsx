@@ -30,6 +30,8 @@ export const Sidebar: FC<SidebarProps> = ({ onCollapse }) => {
   const dispatch = useAppDispatch()
   const user = useSelector(getUserData)
 
+  const userSubscription = user?.subscription
+
   const handleClick = () => {
     onCollapse(!collapsed)
     dispatch(layoutActions.setCollapsed(!collapsed))
@@ -65,14 +67,22 @@ export const Sidebar: FC<SidebarProps> = ({ onCollapse }) => {
           >
             История
           </SidebarItem>
-          <SidebarItem collapsed={collapsed} to={"/chat"} icon={<ChatBubbleBottomCenterTextIcon />}>
-            ChatPRO
-          </SidebarItem>
+          {userSubscription?.chatAccess && (
+            <SidebarItem
+              collapsed={collapsed}
+              to={"/chat"}
+              icon={<ChatBubbleBottomCenterTextIcon />}
+            >
+              ChatPRO
+            </SidebarItem>
+          )}
         </div>
         <div className={styles.sidebarContentMiddle}>
-          <SidebarItem collapsed={collapsed} accent to={"/"} icon={<SparklesIcon />}>
-            Pro&nbsp;&nbsp;+
-          </SidebarItem>
+          {!userSubscription?.chatAccess && (
+            <SidebarItem collapsed={collapsed} accent to={"/"} icon={<SparklesIcon />}>
+              Pro&nbsp;&nbsp;+
+            </SidebarItem>
+          )}
         </div>
         <div className={styles.sidebarContentBottom}>
           <SidebarItem collapsed={collapsed} accent to={"/profile"} icon={<UserCircleIcon />}>

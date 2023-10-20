@@ -120,17 +120,31 @@ const Subscribtion = () => {
                 Дополнительные действия
               </Typography>
               <div className={styles.actionsList}>
-                <Button variant='ghost' size='small' iconRight={<ArrowUpRightIcon />}>
+                <Button
+                  variant='ghost'
+                  size='small'
+                  iconRight={<ArrowUpRightIcon />}
+                  onClick={() => {
+                    window.open(
+                      "https://admin.sassendigital.com/uploads/Oferta_servis_liczenziya_tarify_chat_bot_98121010be.pdf",
+                      "_blank",
+                    )
+                  }}
+                >
                   Условия подписки
                 </Button>
-                <Button variant='ghost' size='small' iconRight={<ArrowUpRightIcon />}>
-                  Сменить тариф
-                </Button>
-                <Button variant='ghost' size='small' iconRight={<ArrowUpRightIcon />}>
-                  Связаться с поддержкой
+                <Button
+                  variant='ghost'
+                  size='small'
+                  onClick={() => {
+                    window.location.href = "mailto:aisupport@sassendigital.com"
+                  }}
+                  iconRight={<ArrowUpRightIcon />}
+                >
+                  <a href='mailto:aisupport@sassendigital'>Связаться с поддержкой</a>
                 </Button>
                 <Button variant='danger' size='small' iconRight={<ArrowUpRightIcon />}>
-                  Отменить подписку
+                  <a href='mailto:aisupport@sassendigital'>Отменить подписку</a>
                 </Button>
               </div>
             </>

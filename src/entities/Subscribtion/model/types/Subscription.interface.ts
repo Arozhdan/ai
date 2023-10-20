@@ -22,4 +22,5 @@ export interface Subscription {
   updatedAt: string
   gptUsageLimit: number | null
   status: SubscriptionStatus
+  chatAccess: boolean
 }
