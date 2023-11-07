@@ -52,3 +52,7 @@
 .small svg {
   @apply w-5 h-5;
 }
+
+.outlined {
+  @apply bg-white border-primary text-black border hover:opacity-90 hover:scale-105;
+}

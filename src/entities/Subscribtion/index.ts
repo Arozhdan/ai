@@ -5,4 +5,6 @@ export { subscriptionActions, subscriptionReducer } from "./model/slice/Subscrip
 export type { SubscriptionSchema } from "./model/types/SubscriptionSchema"
 export { fetchSubscriptionLinks } from "./model/services/FetchSubscriptions/FetchSubscriptions"
 export { SubscribeModal } from "./ui/SubscribeModal/SubscribeModal"
+export { FreetierUpgradeModal } from "./ui/FreetierUpgradeModal/FreetierUpgradeModal"
+export { ChatAccessModal } from "./ui/ChatAccessModal/ChatAccessModal"
 export { getSubscrptionLinks } from "./selectors/getSubscribtionLinks/getSubscribtionLinks"

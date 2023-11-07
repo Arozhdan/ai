@@ -1,0 +1,11 @@
+.modal {
+  @apply max-w-lg;
+}
+
+.intro {
+  @apply mt-4;
+}
+
+.action {
+  @apply mt-8 border-t pt-8;
+}

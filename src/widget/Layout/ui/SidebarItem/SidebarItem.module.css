@@ -1,5 +1,5 @@
 .SidebarItem {
-  @apply relative flex items-center w-full  transition duration-200 hover:bg-primary/10 select-none py-2 px-4 text-black;
+  @apply relative flex items-center w-full cursor-pointer  transition duration-200 hover:bg-primary/10 select-none py-2 px-4 text-black;
 }
 .SidebarItemIcon {
   @apply flex items-center justify-center w-6 h-6 flex-shrink-0 text-current;
@@ -16,4 +16,8 @@
 
 .SidebarItemAccent {
   @apply text-primary;
+}
+
+.SidebarItemUpgradeRequired {
+  @apply text-gray-400;
 }

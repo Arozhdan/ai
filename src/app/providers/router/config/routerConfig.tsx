@@ -4,6 +4,7 @@ import { Chat } from "@/pages/Chat"
 import { Favorites } from "@/pages/Favorites"
 import { History } from "@/pages/History"
 import { Main } from "@/pages/Main"
+import { PaymentFailure, PaymentSuccess } from "@/pages/PaymentStatus"
 import { Profile } from "@/pages/Profile"
 import { Prompt } from "@/pages/Prompt"
 import { Subscribtion } from "@/pages/Subscribtion"
@@ -26,6 +27,8 @@ export enum AppRoutes {
   PROMPT = "prompt/:slug",
   CHAT = "chat",
   SUBSCRIPTION = "subscription",
+  PAYMENT_SUCCESS = "payment_success",
+  PAYMENT_FAILURE = "payment_failure",
   // last
   NOT_FOUND = "not_found",
 }
@@ -43,6 +46,8 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.PROMPT]: "/prompts/:slug",
   [AppRoutes.CHAT]: "/chat",
   [AppRoutes.SUBSCRIPTION]: "/subscription",
+  [AppRoutes.PAYMENT_SUCCESS]: "/payment-success",
+  [AppRoutes.PAYMENT_FAILURE]: "/payment-failure",
   // последний
   [AppRoutes.NOT_FOUND]: "*",
 }
@@ -107,6 +112,14 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     path: RoutePath.subscription,
     authOnly: true,
     element: <Subscribtion />,
+  },
+  [AppRoutes.PAYMENT_SUCCESS]: {
+    path: RoutePath.payment_success,
+    element: <PaymentSuccess />,
+  },
+  [AppRoutes.PAYMENT_FAILURE]: {
+    path: RoutePath.payment_failure,
+    element: <PaymentFailure />,
   },
   // last
   [AppRoutes.NOT_FOUND]: {

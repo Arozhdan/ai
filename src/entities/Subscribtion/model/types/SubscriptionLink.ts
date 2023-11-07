@@ -3,4 +3,6 @@ export interface SubscriptionLink {
   url: string
   intro: string
   description: string
+  price: number
+  isPopular: boolean
 }

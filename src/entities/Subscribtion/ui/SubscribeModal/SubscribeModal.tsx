@@ -8,11 +8,34 @@ import { getUserData } from "@/entities/User"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid"
+import clsx from "clsx"
 
 interface Props {
   isOpen: boolean
   onClose: () => void
 }
+
+const mock = [
+  {
+    label: "Starter",
+    intro: "Пакет для тех, кто хочет использовать только авторские промпты",
+    price: "1 190 ₽",
+    url: "https://www.google.com",
+  },
+  {
+    label: "Infinity",
+    intro: "Пакет для тех, кто хочет использовать Sassen AI на максимум",
+    price: "1 190 ₽",
+    url: "https://www.google.com",
+    isPopular: true,
+  },
+  {
+    label: "Enterprise",
+    intro: "Пакет для маркетинговых агентств, крупных организаций",
+    price: "1 190 ₽",
+    url: "https://www.google.com",
+  },
+]
 
 export const SubscribeModal: FC<Props> = ({ isOpen, onClose }) => {
   const links = useSelector(getSubscrptionLinks)
@@ -38,27 +61,27 @@ export const SubscribeModal: FC<Props> = ({ isOpen, onClose }) => {
       contentLabel='Подписка 123'
       isOpen={isOpen}
     >
-      <Typography variant='h2' className='text-primary'>
-        Оформите подписку
-      </Typography>
-      <Typography variant='small' className='block mt-8'>
-        Оформите подписку и получите доступ к полному функционалу сервиса. Подписка дает доступ к
-        полному функционалу сервиса.
-      </Typography>
       <div className={styles.links}>
         {links?.map((link) => (
-          <div className={styles.link} key={link.url}>
-            <Typography variant='h5'>{link.label}</Typography>
-            <div className='prose prose-sm mt-2 mb-4'>{link.intro}</div>
-            <ReactMarkdown className='prose prose-sm' remarkPlugins={[remarkGfm]}>
-              {link.description}
-            </ReactMarkdown>
-            <div className={styles.linkFooter}>
-              <Button variant='primary' className='mt-4 w-full' size='small'>
-                <a href={parseLinks(link.url)} target='_blank' rel='noreferrer'>
-                  Оформить <ArrowUpRightIcon className='inline-block ml-2' />
-                </a>
-              </Button>
+          <div className={clsx(styles.link, link.isPopular && styles.popular)} key={link.label}>
+            {link.isPopular && <div className={styles.badge}>Самый популярный</div>}
+            <Typography variant='h2' className='text-center'>
+              {link.label}
+            </Typography>
+            <div className={styles.intro}>{link.intro}</div>
+            <div className={styles.price}>
+              <Typography variant='h2'>{link.price}</Typography>
+              <Typography variant='p'>в месяц</Typography>
+            </div>
+            <Button variant='outlined' className='mt-4 w-full' size='large'>
+              <a className='uppercase' href={link.url} target='_blank' rel='noreferrer'>
+                Выбрать тариф <ArrowUpRightIcon className='inline-block ml-2' />
+              </a>
+            </Button>
+            <div className={styles.featuresWrapper}>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} className={styles.features}>
+                {link.description}
+              </ReactMarkdown>
             </div>
           </div>
         ))}

@@ -18,6 +18,7 @@ import {
   ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/outline"
 import { getUserData } from "@/entities/User"
+import { RoutePath } from "@/app/providers/router/config/routerConfig"
 
 interface SidebarProps {
   onCollapse: (isCollapsed: boolean) => void
@@ -67,23 +68,16 @@ export const Sidebar: FC<SidebarProps> = ({ onCollapse }) => {
           >
             История
           </SidebarItem>
-          {userSubscription?.chatAccess && (
-            <SidebarItem
-              collapsed={collapsed}
-              to={"/chat"}
-              icon={<ChatBubbleBottomCenterTextIcon />}
-            >
-              ChatPRO
-            </SidebarItem>
-          )}
+          <SidebarItem
+            to='/chat'
+            upgrageRequired={!userSubscription?.chatAccess}
+            collapsed={collapsed}
+            icon={<ChatBubbleBottomCenterTextIcon />}
+          >
+            ChatPRO
+          </SidebarItem>
         </div>
-        <div className={styles.sidebarContentMiddle}>
-          {!userSubscription?.chatAccess && (
-            <SidebarItem collapsed={collapsed} accent to={"/"} icon={<SparklesIcon />}>
-              Pro&nbsp;&nbsp;+
-            </SidebarItem>
-          )}
-        </div>
+        <div className={styles.sidebarContentMiddle}>{/*  */}</div>
         <div className={styles.sidebarContentBottom}>
           <SidebarItem collapsed={collapsed} accent to={"/profile"} icon={<UserCircleIcon />}>
             {user?.username}

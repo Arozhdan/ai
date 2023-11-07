@@ -13,7 +13,9 @@ import { useSetPrompt } from "../../lib/useSetPrompt"
 import { getIsLoading } from "../../model/selectors/getIsLoading/getIsLoading"
 import { RequestLoader } from "../RequestLoader/RequestLoader"
 import { useLocation } from "react-router-dom"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { getUserData } from "@/entities/User"
+import { FreetierUpgradeModal } from "@/entities/Subscribtion"
 
 interface FormProps {
   className?: string
@@ -37,6 +39,20 @@ export const Form = ({ className }: FormProps) => {
   const newQuery = useSelector(getNewQuery)
   const isLoading = useSelector(getIsLoading)
 
+  const user = useSelector(getUserData)
+
+  if (!user) return null
+
+  const subscription = user.subscription
+
+  if (!subscription) return null
+
+  const usage = user.currentUsage
+
+  const limit = subscription.gptUsageLimit
+
+  const [isModalOpen, setModalOpen] = useState(false)
+
   const { pathname } = useLocation()
 
   useEffect(() => {
@@ -57,6 +73,12 @@ export const Form = ({ className }: FormProps) => {
     onSubmit: (values) => {
       console.log(values)
       if (!prompt) return
+
+      if (limit && usage >= limit) {
+        setModalOpen(true)
+        return
+      }
+
       dispatch(
         sendQuery({
           title: prompt.attributes.name,
@@ -83,47 +105,50 @@ export const Form = ({ className }: FormProps) => {
   }
 
   return (
-    <div className={styles.wrapper}>
-      {isLoading && <RequestLoader />}
-      <form onSubmit={formik.handleSubmit} className={clsx(styles.form, className)}>
-        <div className={styles.inputContainer}>
-          <TextArea
-            value={formik.values.input}
-            name='input'
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={(formik.touched.input && formik.errors.input) || ""}
-            placeholder={prompt?.attributes.example || "Контекст"}
-            className={styles.input}
-            onKeyDown={handleKeyDown}
-            label={prompt?.attributes.helpText}
-          />
-          <Select
-            options={langOptions}
-            activeOption={formik.values.lang}
-            label='Язык'
-            className={styles.lang}
-            onChange={(value) => {
-              formik.setFieldValue("lang", value)
-            }}
-          />
-        </div>
-        <div className={styles.actions}>
-          <Button
-            variant='ghost'
-            type='button'
-            size='small'
-            onClick={handleClear}
-            disabled={!formik.dirty || isLoading}
-            tabIndex={2}
-          >
-            Очистить
-          </Button>
-          <Button variant='primary' size='small' type='submit' disabled={isLoading} tabIndex={1}>
-            Сгенерировать
-          </Button>
-        </div>
-      </form>
-    </div>
+    <>
+      <FreetierUpgradeModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+      <div className={styles.wrapper}>
+        {isLoading && <RequestLoader />}
+        <form onSubmit={formik.handleSubmit} className={clsx(styles.form, className)}>
+          <div className={styles.inputContainer}>
+            <TextArea
+              value={formik.values.input}
+              name='input'
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={(formik.touched.input && formik.errors.input) || ""}
+              placeholder={prompt?.attributes.example || "Контекст"}
+              className={styles.input}
+              onKeyDown={handleKeyDown}
+              label={prompt?.attributes.helpText}
+            />
+            <Select
+              options={langOptions}
+              activeOption={formik.values.lang}
+              label='Язык'
+              className={styles.lang}
+              onChange={(value) => {
+                formik.setFieldValue("lang", value)
+              }}
+            />
+          </div>
+          <div className={styles.actions}>
+            <Button
+              variant='ghost'
+              type='button'
+              size='small'
+              onClick={handleClear}
+              disabled={!formik.dirty || isLoading}
+              tabIndex={2}
+            >
+              Очистить
+            </Button>
+            <Button variant='primary' size='small' type='submit' disabled={isLoading} tabIndex={1}>
+              Сгенерировать
+            </Button>
+          </div>
+        </form>
+      </div>
+    </>
   )
 }
