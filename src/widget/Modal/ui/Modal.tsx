@@ -35,6 +35,7 @@ export const AppModal: FC<Props> = ({
       isOpen={isOpen}
       onAfterOpen={afterOpenModal}
       onRequestClose={handleClose}
+      ariaHideApp={false}
       className={clsx(styles.modal, className)}
       overlayClassName={clsx(styles.overlay, overlayClassName)}
       contentLabel={contentLabel}

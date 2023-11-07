@@ -1,5 +1,5 @@
 import { Typography } from "@/shared/ui"
-import React, { lazy, useEffect } from "react"
+import { useEffect } from "react"
 
 export const PaymentFailure = () => {
   const seconds = 10

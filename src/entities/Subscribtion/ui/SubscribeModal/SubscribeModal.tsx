@@ -74,7 +74,7 @@ export const SubscribeModal: FC<Props> = ({ isOpen, onClose }) => {
               <Typography variant='p'>в месяц</Typography>
             </div>
             <Button variant='outlined' className='mt-4 w-full' size='large'>
-              <a className='uppercase' href={link.url} target='_blank' rel='noreferrer'>
+              <a className='uppercase' href={parseLinks(link.url)} target='_blank' rel='noreferrer'>
                 Выбрать тариф <ArrowUpRightIcon className='inline-block ml-2' />
               </a>
             </Button>

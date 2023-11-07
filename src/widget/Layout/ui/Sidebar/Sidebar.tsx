@@ -12,13 +12,11 @@ import {
   HeartIcon,
   HomeIcon,
   QueueListIcon,
-  SparklesIcon,
   ArrowRightIcon,
   UserCircleIcon,
   ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/outline"
 import { getUserData } from "@/entities/User"
-import { RoutePath } from "@/app/providers/router/config/routerConfig"
 
 interface SidebarProps {
   onCollapse: (isCollapsed: boolean) => void

@@ -1,6 +1,6 @@
 import clsx from "clsx"
 import cls from "./SidebarItem.module.css"
-import { Link, LinkProps, useNavigate } from "react-router-dom"
+import { Link, LinkProps } from "react-router-dom"
 import { memo, useState } from "react"
 import { Typography } from "@/shared/ui"
 import { ChatAccessModal } from "@/entities/Subscribtion"

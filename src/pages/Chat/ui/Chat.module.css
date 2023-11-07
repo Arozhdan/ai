@@ -25,3 +25,26 @@
   @apply overflow-hidden;
   grid-area: main;
 }
+
+/*  max width 768 */
+
+@media (max-width: 768px) {
+  .page {
+    @apply min-h-screen;
+  }
+  .container {
+    @apply grid-cols-1;
+    grid-template-areas:
+      "header"
+      "aside"
+      "main";
+
+    grid-template-rows: auto 30vh 1fr;
+  }
+  .aside {
+    @apply border-b border-gray-200 h-[30vh];
+  }
+  .main {
+    @apply px-2 mt-8 pt-2 border-t border-gray-200;
+  }
+}
