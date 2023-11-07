@@ -15,28 +15,6 @@ interface Props {
   onClose: () => void
 }
 
-const mock = [
-  {
-    label: "Starter",
-    intro: "Пакет для тех, кто хочет использовать только авторские промпты",
-    price: "1 190 ₽",
-    url: "https://www.google.com",
-  },
-  {
-    label: "Infinity",
-    intro: "Пакет для тех, кто хочет использовать Sassen AI на максимум",
-    price: "1 190 ₽",
-    url: "https://www.google.com",
-    isPopular: true,
-  },
-  {
-    label: "Enterprise",
-    intro: "Пакет для маркетинговых агентств, крупных организаций",
-    price: "1 190 ₽",
-    url: "https://www.google.com",
-  },
-]
-
 export const SubscribeModal: FC<Props> = ({ isOpen, onClose }) => {
   const links = useSelector(getSubscrptionLinks)
   const user = useSelector(getUserData)

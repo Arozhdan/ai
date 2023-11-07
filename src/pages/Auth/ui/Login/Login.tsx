@@ -7,7 +7,6 @@ import { useCallback, useEffect } from "react"
 import { loginByUsername } from "@/features/AuthByUserName/model/services/LoginByUserName/LoginByUserName"
 import { getUserAuthData, userActions } from "@/entities/User"
 import { useSelector } from "react-redux"
-import { FreetierUpgradeModal, SubscribeModal } from "@/entities/Subscribtion"
 
 const Login = () => {
   const dispatch = useAppDispatch()
