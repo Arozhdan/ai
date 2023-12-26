@@ -74,7 +74,7 @@ export const Form = ({ className }: FormProps) => {
       console.log(values)
       if (!prompt) return
 
-      if (limit && usage >= limit) {
+      if (limit && usage >= limit && limit !== -1) {
         setModalOpen(true)
         return
       }
